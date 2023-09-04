@@ -174,8 +174,8 @@
         if ($total == 1) {
             $_SESSION['username'] = $username;
             echo '<script type="text/javascript">window.location.href = "dashboard.php";</script>';
+            echo '<script type="text/javascript">toastr.success("Login Successfully")</script>';
         } else {
-            // header('location:auth.php');
             echo '<script type="text/javascript">toastr.error("Incorrect username or password")</script>';
         }
     }

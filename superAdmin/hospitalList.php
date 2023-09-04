@@ -29,7 +29,7 @@
     <div class="content container">
         <div class="pt-3">
             <h3 class="h2 mb-0 text-capitalize d-flex align-items-center gap-2">
-                Dashboard
+                Hospital List
             </h3>
         </div>
         <div class="row mt-5">
@@ -40,7 +40,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <!-- <table class="table">
+                            <table class="table">
                                 <thead class="thead-light thead-50 text-capitalize">
                                     <tr>
                                         <th>S no.</th>
@@ -53,7 +53,7 @@
                                     </tr>
                                 </thead>
 
-                            </table> -->
+                            </table>
 
                         </div>
                     </div>

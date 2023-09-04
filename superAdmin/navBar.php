@@ -1,53 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
+<style>
+  .active {
+    color: #8ce98a !important;
+    background-color: rgba(239, 246, 255, 0.1) !important;
+  }
+</style>
+
 <body>
-<nav class="navbar bg-body-tertiary fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Offcanvas navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="logout.php">Logout</a>
-          </li>
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li> -->
-        </ul>
-        <!-- <form class="d-flex mt-3" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form> -->
-      </div>
-    </div>
+  <div class="w3-sidebar w3-bar-block w3-xxlarge" style="width:70px; color:white; background-color: #1764a3;">
+    <a href="dashboard.php" id="dashboard" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-dashboard"></i></a>
+    <a href="hospitalList.php" id="envelope" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-hospital-o"></i></a>
+    <a href="patient.php" id="patient" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-user"></i></a>
+    <a href="vaccineList.php" id="vaccine" class="w3-bar-item w3-button sidebar-item"><i class="bi bi-virus"></i></a>
+    <!-- <a href="#" id="search" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-search"></i></a>
+    <a href="#" id="globe" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-globe"></i></a>
+    <a href="#" id="trash" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-trash"></i></a> -->
   </div>
-</nav>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+  <div class="text-dark" style="float: right;">
+    <h3>
+      <?php
+      if (isset($_SESSION['username'])) {
+        // echo $_SESSION['username'];
+      } else {
+        header('location:auth.php');
+      }
+      ?>
+    </h3>
+  </div>
+
+
+
+  <!-- Script -->
+  <script>
+    $(document).ready(function() {
+      var activeItemID = localStorage.getItem('activeItem');
+      if (activeItemID) {
+        $("#" + activeItemID).addClass("active");
+      }
+      $(".sidebar-item").click(function() {
+        $(".sidebar-item").removeClass("active");
+        $(this).addClass("active");
+
+        localStorage.setItem('activeItem', $(this).attr('id'));
+      });
+    });
+
+    function hospital () {
+        $.ajax({
+            url:"hospitalList.php",    //the page containing php script
+            // type: "post",    //request type,
+            // dataType: 'json',
+            // data: {registration: "success", name: "xyz", email: "abc@gmail.com"},
+            success:function(result){
+                console.log(result.abc);
+            }
+        });
+    }
+  </script>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
+
 </html>
