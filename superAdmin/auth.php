@@ -7,6 +7,13 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <?php
+    include('connection.php');
+    session_start();
+    ?>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
 </head>
 
@@ -132,11 +139,12 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
-    .tooglePass{
-    position: absolute;
-    bottom: 127px;
-    left: 293px;
-    cursor: pointer;
+
+    .tooglePass {
+        position: absolute;
+        bottom: 127px;
+        left: 293px;
+        cursor: pointer;
     }
 </style>
 
@@ -156,24 +164,23 @@
     </div>
 
     <?php
-    include('connection.php');
-    session_start();
-
     if (isset($_POST['btn'])) {
-        $username= $_POST['username'];
-        $password_hash= $_POST['password_hash'];
+        $username = $_POST['username'];
+        $password_hash = $_POST['password_hash'];
 
         $query = "select * from super_admin where username='$username' and password_hash='$password_hash'";
-        $res = mysqli_query($conn,$query);
+        $res = mysqli_query($conn, $query);
         $total = mysqli_num_rows($res);
         if ($total == 1) {
-            $_SESSION['username']=$username;
-            header('location:index.php');
-          }else{
-            header('location:login.php');
+            $_SESSION['username'] = $username;
+            echo '<script type="text/javascript">window.location.href = "dashboard.php";</script>';
+        } else {
+            // header('location:auth.php');
+            echo '<script type="text/javascript">toastr.error("Incorrect username or password")</script>';
         }
     }
     ?>
+
 
 
 
@@ -196,6 +203,7 @@
             showPasswordIcon.style.display = 'inline-block';
         });
     </script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
