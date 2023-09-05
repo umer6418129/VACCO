@@ -68,18 +68,20 @@
                                     </select>
                                 </div>
                                 <button class="btn btn-info btn-sm mx-2 text-white" name="searchBtn">Search</button>
-                                <button class="btn btn-primary btn-sm mx-2 text-white" name="Reset">Reset Filter</button>
                             </form>
-                            <a class="btn btn-success" href="hospitalRequest.php">
-                                <span>Request For Approval</span>
-                                <span class="badge">
-                                    <?php
-                                    $query = "SELECT * FROM hospital WHERE isapprove = 'Pending'";
-                                    $result = mysqli_query($conn, $query);
-                                    echo mysqli_num_rows($result);
-                                    ?>
-                                </span>
-                            </a>
+                            <form action="" method="POST">
+                                <button class="btn btn-primary btn-sm mx-2 text-white" name="Reset">Reset Filter</button>
+                                <a class="btn btn-success" href="hospitalRequest.php">
+                                    <span>Request For Approval</span>
+                                    <span class="badge">
+                                        <?php
+                                        $query = "SELECT * FROM hospital WHERE isapprove = 'Pending'";
+                                        $result = mysqli_query($conn, $query);
+                                        echo mysqli_num_rows($result);
+                                        ?>
+                                    </span>
+                                </a>
+                            </form>
 
                         </div>
 
