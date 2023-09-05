@@ -68,6 +68,7 @@
                                     </select>
                                 </div>
                                 <button class="btn btn-info btn-sm mx-2 text-white" name="searchBtn">Search</button>
+                                <button class="btn btn-primary btn-sm mx-2 text-white" name="Reset">Reset Filter</button>
                             </form>
                             <a class="btn btn-success" href="hospitalRequest.php">
                                 <span>Request For Approval</span>
@@ -115,6 +116,30 @@
                                             echo "
                                                 <h2 class='text-center'>No Data</h2>
                                             ";
+                                        }
+                                    } else if (isset($_POST['Reset'])) {
+                                        $query = "select * from hospital";
+                                        $result = mysqli_query($conn, $query);
+                                        if (mysqli_num_rows($result) != 0) {
+                                            while ($data = mysqli_fetch_assoc($result)) {
+                                                echo "<tr>
+                                                        <th>name</th>
+                                                        <th>address</th>
+                                                        <th>country</th>
+                                                        <th>email</th>
+                                                        <th>status</th>
+                                                    </tr>
+                                                
+                                                    <tr>
+                                                        <td>" . $data['name'] . "</td>
+                                                        <td>" . $data['address'] . "</td>
+                                                        <td>" . $data['city'] . ',' . $data['country'] . "</td>
+                                                        <td>" . $data['email'] . "</td>
+                                                        <td>" . $data['isapprove'] . "</td>
+                                                    </tr>";
+                                            }
+                                        } else {
+                                            echo "<h2 class='text-center'>No Data</h2>";
                                         }
                                     } else {
                                         $query = "select * from hospital";
