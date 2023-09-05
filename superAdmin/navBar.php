@@ -19,7 +19,7 @@
 </style>
 
 <body>
-  <div class="w3-sidebar w3-bar-block w3-xxlarge" style="width:70px; color:white; background-color: #1764a3;">
+  <div class="w3-sidebar w3-bar-block w3-xxlarge" style="width:70px; color:white; background-color: #073b74;">
     <a href="dashboard.php" id="dashboard" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-dashboard"></i></a>
     <a href="hospitalList.php" id="envelope" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-hospital-o"></i></a>
     <a href="patient.php" id="patient" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-user"></i></a>
