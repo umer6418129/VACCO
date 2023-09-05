@@ -16,6 +16,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 </head>
 
+<style>
+    .searchBtn {
+        background-color: #1764a3;
+        color: white;
+        border: none;
+    }
+
+    .form-select {
+        cursor: pointer;
+    }
+
+    .btn .badge {
+        position: absolute;
+        right: -21px;
+        top: -19px !important;
+        border-radius: 50%;
+        background-color: red;
+        color: white;
+    }
+</style>
+
 <body>
     <?php
     if (isset($_SESSION['username'])) {
@@ -36,21 +57,91 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
+                        <label for="">Select status <span class="text-danger">*</span></label><br>
+                        <div class="d-flex justify-content-between">
+                            <form action="" method="POST" class="d-flex">
+                                <div>
+                                    <select class="form-select w-auto" name="status">
+                                        <option value="Pending">Pending</option>
+                                        <option value="Accepted">Accepted</option>
+                                        <option value="Rejected">Rejected</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-info btn-sm mx-2 text-white" name="searchBtn">Search</button>
+                            </form>
+                            <a class="btn btn-success" href="hospitalRequest.php">
+                                <span>Request For Approval</span>
+                                <span class="badge">
+                                    <?php
+                                    $query = "SELECT * FROM hospital WHERE isapprove = 'Pending'";
+                                    $result = mysqli_query($conn, $query);
+                                    echo mysqli_num_rows($result);
+                                    ?>
+                                </span>
+                            </a>
+
+                        </div>
 
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="thead-light thead-50 text-capitalize">
-                                    <tr>
-                                        <th>S no.</th>
-                                        <th>name</th>
-                                        <th>address</th>
-                                        <th>country</th>
-                                        <th>email</th>
-                                        <th>status</th>
-                                        <th>isactive</th>
-                                    </tr>
+
+                                    <?php
+                                    if (isset($_POST['searchBtn'])) {
+                                        $status = $_POST['status'];
+                                        $query = "SELECT * FROM hospital WHERE isapprove = '$status' ORDER BY isapprove DESC";
+                                        $result = mysqli_query($conn, $query);
+                                        if (mysqli_num_rows($result) != 0) {
+                                            while ($data = mysqli_fetch_assoc($result)) {
+                                                echo "<tr>
+                                                        <th>name</th>
+                                                        <th>address</th>
+                                                        <th>country</th>
+                                                        <th>email</th>
+                                                        <th>status</th>
+                                                    </tr>
+                                                
+                                                    <tr>
+                                                        <td>" . $data['name'] . "</td>
+                                                        <td>" . $data['address'] . "</td>
+                                                        <td>" . $data['city'] . ',' . $data['country'] . "</td>
+                                                        <td>" . $data['email'] . "</td>
+                                                        <td>" . $data['isapprove'] . "</td>
+                                                    </tr>";
+                                            }
+                                        } else {
+                                            echo "
+                                                <h2 class='text-center'>No Data</h2>
+                                            ";
+                                        }
+                                    } else {
+                                        $query = "select * from hospital";
+                                        $result = mysqli_query($conn, $query);
+                                        if (mysqli_num_rows($result) != 0) {
+                                            while ($data = mysqli_fetch_assoc($result)) {
+                                                echo "<tr>
+                                                        <th>name</th>
+                                                        <th>address</th>
+                                                        <th>country</th>
+                                                        <th>email</th>
+                                                        <th>status</th>
+                                                    </tr>
+                                                
+                                                    <tr>
+                                                        <td>" . $data['name'] . "</td>
+                                                        <td>" . $data['address'] . "</td>
+                                                        <td>" . $data['city'] . ',' . $data['country'] . "</td>
+                                                        <td>" . $data['email'] . "</td>
+                                                        <td>" . $data['isapprove'] . "</td>
+                                                    </tr>";
+                                            }
+                                        } else {
+                                            echo "<h2 class='text-center'>No Data</h2>";
+                                        }
+                                    }
+                                    ?>
                                 </thead>
 
                             </table>
