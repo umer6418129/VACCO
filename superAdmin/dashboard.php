@@ -15,6 +15,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 </head>
+<style>
+    h2{
+        color: #073b74;
+    }
+</style>
 
 <body>
     <?php
@@ -39,23 +44,51 @@
 
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <!-- <table class="table">
-                                <thead class="thead-light thead-50 text-capitalize">
-                                    <tr>
-                                        <th>S no.</th>
-                                        <th>name</th>
-                                        <th>address</th>
-                                        <th>country</th>
-                                        <th>email</th>
-                                        <th>status</th>
-                                        <th>isactive</th>
-                                    </tr>
-                                </thead>
-
-                            </table> -->
-
+                        <div class="container">
+                            <h2>Hospitals:</h2><br>
+                            <div class="row justify-content-between">
+                                <div class="card bg-success shadow mb-3 col-4" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        <h3 class="text-white">Current 
+                                            <span>
+                                                <?php
+                                                $query = "SELECT * FROM hospital WHERE isapprove = 'Accepted'";
+                                                $res = mysqli_query($conn, $query);
+                                                echo mysqli_num_rows($res);
+                                                ?>
+                                            </span>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="card bg-info shadow mb-3 col-4" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        <h3 class="text-white">Pending 
+                                            <span>
+                                                <?php
+                                                $query = "SELECT * FROM hospital WHERE isapprove = 'Pending'";
+                                                $res = mysqli_query($conn, $query);
+                                                echo mysqli_num_rows($res);
+                                                ?>
+                                            </span>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="card bg-danger shadow mb-3 col-4" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        <h3 class="text-white">Rejected 
+                                            <span>
+                                                <?php
+                                                $query = "SELECT * FROM hospital WHERE isapprove = 'Rejected'";
+                                                $res = mysqli_query($conn, $query);
+                                                echo mysqli_num_rows($res);
+                                                ?>
+                                            </span>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
 
                 </div>
