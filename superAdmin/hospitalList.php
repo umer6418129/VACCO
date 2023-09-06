@@ -90,26 +90,27 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="thead-light thead-50 text-capitalize">
-
                                     <?php
                                     if (isset($_POST['searchBtn'])) {
                                         $status = $_POST['status'];
                                         $query = "SELECT * FROM hospital WHERE isapprove = '$status' ORDER BY isapprove DESC";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
+                                            echo "
+                                            <tr>
+                                                <th>name</th>
+                                                <th>address</th>
+                                                <th>country</th>
+                                                <th>email</th>
+                                                <th>status</th>
+                                            </tr>
+                                            ";
                                             while ($data = mysqli_fetch_assoc($result)) {
-                                                echo "<tr>
-                                                        <th>name</th>
-                                                        <th>address</th>
-                                                        <th>country</th>
-                                                        <th>email</th>
-                                                        <th>status</th>
-                                                    </tr>
-                                                
+                                                echo "
                                                     <tr>
                                                         <td>" . $data['name'] . "</td>
                                                         <td>" . $data['address'] . "</td>
-                                                        <td>" . $data['city'] . ',' . $data['country'] . "</td>
+                                                        <td>" . $data['country'] . "</td>
                                                         <td>" . $data['email'] . "</td>
                                                         <td>" . $data['isapprove'] . "</td>
                                                     </tr>";
@@ -123,19 +124,21 @@
                                         $query = "select * from hospital";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
+                                            echo "
+                                            <tr>
+                                                <th>name</th>
+                                                <th>address</th>
+                                                <th>country</th>
+                                                <th>email</th>
+                                                <th>status</th>
+                                            </tr>
+                                            ";
                                             while ($data = mysqli_fetch_assoc($result)) {
-                                                echo "<tr>
-                                                        <th>name</th>
-                                                        <th>address</th>
-                                                        <th>country</th>
-                                                        <th>email</th>
-                                                        <th>status</th>
-                                                    </tr>
-                                                
+                                                echo "
                                                     <tr>
                                                         <td>" . $data['name'] . "</td>
                                                         <td>" . $data['address'] . "</td>
-                                                        <td>" . $data['city'] . ',' . $data['country'] . "</td>
+                                                        <td>" . $data['country'] . "</td>
                                                         <td>" . $data['email'] . "</td>
                                                         <td>" . $data['isapprove'] . "</td>
                                                     </tr>";
@@ -147,19 +150,21 @@
                                         $query = "select * from hospital";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
+                                            echo "
+                                            <tr>
+                                                <th>name</th>
+                                                <th>address</th>
+                                                <th>country</th>
+                                                <th>email</th>
+                                                <th>status</th>
+                                            </tr>
+                                            ";
                                             while ($data = mysqli_fetch_assoc($result)) {
-                                                echo "<tr>
-                                                        <th>name</th>
-                                                        <th>address</th>
-                                                        <th>country</th>
-                                                        <th>email</th>
-                                                        <th>status</th>
-                                                    </tr>
-                                                
+                                                echo "
                                                     <tr>
                                                         <td>" . $data['name'] . "</td>
                                                         <td>" . $data['address'] . "</td>
-                                                        <td>" . $data['city'] . ',' . $data['country'] . "</td>
+                                                        <td>" . $data['country'] . "</td>
                                                         <td>" . $data['email'] . "</td>
                                                         <td>" . $data['isapprove'] . "</td>
                                                     </tr>";

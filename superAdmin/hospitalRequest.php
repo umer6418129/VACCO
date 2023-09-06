@@ -47,19 +47,21 @@
                                         $query = "SELECT * FROM hospital WHERE isapprove = 'Pending' ORDER BY isapprove DESC";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
+                                            echo "
+                                            <tr>
+                                                <th>name</th>
+                                                <th>address</th>
+                                                <th>country</th>
+                                                <th>email</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            ";
                                             while ($data = mysqli_fetch_assoc($result)) {
-                                                echo "<tr>
-                                                        <th>name</th>
-                                                        <th>address</th>
-                                                        <th>country</th>
-                                                        <th>email</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                
+                                                echo "
                                                     <tr>
                                                         <td>" . $data['name'] . "</td>
                                                         <td>" . $data['address'] . "</td>
-                                                        <td>" . $data['city'] . ',' . $data['country'] . "</td>
+                                                        <td>" . $data['country'] . "</td>
                                                         <td>" . $data['email'] . "</td>
                                                         <td>
                                                             <a href = './hospital/Apporal.php ?id=$data[id]' class='btn btn-success'>Accept</a>

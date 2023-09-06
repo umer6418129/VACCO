@@ -6,10 +6,12 @@
     if ($result) {
         echo "  <script>
                     alert('Hospital has been Rejected');
-                </script>";
-    }else{
-        echo "  <script>
+                    window.location='../hospitalRequest.php';
+                    </script>";
+                }else{
+                    echo "  <script>
                     alert('Something went's wrong');
+                    window.location='../hospitalRequest.php';
                 </script>";
     }
 ?>
