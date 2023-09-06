@@ -16,6 +16,10 @@
     color: #8ce98a !important;
     background-color: rgba(239, 246, 255, 0.1) !important;
   }
+  #user{
+    position: absolute;
+    bottom: 0px;
+  }
 </style>
 
 <body>
@@ -24,6 +28,7 @@
     <a href="hospitalList.php" id="envelope" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-hospital-o"></i></a>
     <a href="patient.php" id="patient" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-user"></i></a>
     <a href="vaccineList.php" id="vaccine" class="w3-bar-item w3-button sidebar-item"><i class="bi bi-virus"></i></a>
+    <a href="manage.php" id="user" class="w3-bar-item w3-button sidebar-item"><i class='fa fa-user-circle'></i></a>
     <!-- <a href="#" id="search" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-search"></i></a>
     <a href="#" id="globe" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-globe"></i></a>
     <a href="#" id="trash" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-trash"></i></a> -->

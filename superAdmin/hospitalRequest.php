@@ -12,8 +12,8 @@
     session_start();
     ?>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 </head>
 
 <body>
@@ -34,6 +34,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
+                        <div>
+                            <a class="btn btn-secondary" href="hospitalList.php"><i class="bi bi-arrow-left"></i>Back</a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -60,7 +63,7 @@
                                                         <td>" . $data['email'] . "</td>
                                                         <td>
                                                             <a href = './hospital/Apporal.php ?id=$data[id]' class='btn btn-success'>Accept</a>
-                                                            <a href = './hospital/Apporal.php ?id=$data[id]' class='btn btn-danger'>Deny</a>
+                                                            <a href = './hospital/Deny.php ?id=$data[id]' class='btn btn-danger'>Deny</a>
                                                         </td>
                                                     </tr>";
                                             }
