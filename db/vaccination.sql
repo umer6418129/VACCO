@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2023 at 11:11 PM
+-- Generation Time: Sep 07, 2023 at 11:20 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -68,7 +68,7 @@ CREATE TABLE `super_admin` (
 --
 
 INSERT INTO `super_admin` (`id`, `username`, `password_hash`, `create_at`) VALUES
-(1, 'Admin@vaccine', 'Admin@vaccine564', '2023-09-06 00:00:00');
+(1, 'Admin@vaccine', 'Admin@123', '2023-09-06 00:00:00');
 
 --
 -- Indexes for dumped tables
