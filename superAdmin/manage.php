@@ -108,9 +108,7 @@
                                         $current = $_POST['currentPassword'];
                                         $new = $_POST['NewPassword'];
 
-                                        $checkquery = "select * from super_admin where password_hash = '$current'";
-                                        $checkResult = mysqli_query($conn, $checkquery);
-                                        if (mysqli_num_rows($checkResult) != 1) {
+                                        if ($current != $currentPass ) {
                                             echo '<script>
                                             alert("Please type correct Password")
                                             </script>';
