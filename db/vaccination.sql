@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2023 at 11:20 PM
+-- Generation Time: Sep 06, 2023 at 11:11 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -31,21 +31,24 @@ CREATE TABLE `hospital` (
   `id` bigint(20) NOT NULL,
   `name` varchar(200) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
-  `city` varchar(30) DEFAULT NULL,
   `country` varchar(30) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `isapprove` varchar(50) DEFAULT NULL,
   `isactive` int(11) DEFAULT NULL,
-  `create_at` datetime DEFAULT NULL
+  `create_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `hospital`
 --
 
-INSERT INTO `hospital` (`id`, `name`, `address`, `city`, `country`, `email`, `password`, `isapprove`, `isactive`, `create_at`) VALUES
-(1, 'Eureka', '12/abc avenue', 'Ny', 'USA', 'admin@eureka.com', 'admin!eureka.12', 'Pending', 0, '2023-09-06 01:00:46');
+INSERT INTO `hospital` (`id`, `name`, `address`, `country`, `email`, `password`, `isapprove`, `isactive`, `create_at`) VALUES
+(1, 'Eureka', '12/abc avenue', 'USA', 'admin@eureka.com', 'admin!eureka.12', 'Accepted', 0, '2023-09-06 01:00:46'),
+(2, 'aki', 'abs roard', 'Ind', 'aki@gmail.com', 'aki@gmail.com', 'Accepted', 0, '0000-00-00 00:00:00'),
+(3, 'ASa', 'abcd', 'Anguilla', 'user22@gmail.com', 'user22@gmail.com', 'Rejected', 0, '0000-00-00 00:00:00'),
+(4, 'qatar', 'Orangi town ', 'Albania', 'r0dney.m+003@yandex.com', 'r0dney.m+003@yandex.com', 'Rejected', 0, '0000-00-00 00:00:00'),
+(6, 'santum', 'Orangi town ', 'Australia', 'marcrodney2207@gmail.com', 'marcrodney2207@gmail.com', 'Rejected', 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -75,7 +78,8 @@ INSERT INTO `super_admin` (`id`, `username`, `password_hash`, `create_at`) VALUE
 -- Indexes for table `hospital`
 --
 ALTER TABLE `hospital`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `super_admin`
@@ -91,7 +95,7 @@ ALTER TABLE `super_admin`
 -- AUTO_INCREMENT for table `hospital`
 --
 ALTER TABLE `hospital`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `super_admin`

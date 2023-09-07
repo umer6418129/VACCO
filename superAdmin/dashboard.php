@@ -45,11 +45,10 @@
                     </div>
                     <div class="card-body">
                         <div class="container">
-                            <h2>Hospitals:</h2><br>
                             <div class="row justify-content-between">
-                                <div class="card bg-success shadow mb-3 col-4" style="max-width: 18rem;">
+                                <div class="card bg-success shadow mb-3 col-4 border-0" style="max-width: 18rem;">
                                     <div class="card-body">
-                                        <h3 class="text-white">Current 
+                                        <h4 class="text-white">Current Hospitals:
                                             <span>
                                                 <?php
                                                 $query = "SELECT * FROM hospital WHERE isapprove = 'Accepted'";
@@ -57,12 +56,12 @@
                                                 echo mysqli_num_rows($res);
                                                 ?>
                                             </span>
-                                        </h3>
+                                        </h4>
                                     </div>
                                 </div>
-                                <div class="card bg-info shadow mb-3 col-4" style="max-width: 18rem;">
+                                <div class="card bg-info shadow mb-3 col-4 border-0" style="max-width: 18rem;">
                                     <div class="card-body">
-                                        <h3 class="text-white">Pending 
+                                        <h4 class="text-white">Pending Hospitals:
                                             <span>
                                                 <?php
                                                 $query = "SELECT * FROM hospital WHERE isapprove = 'Pending'";
@@ -70,12 +69,12 @@
                                                 echo mysqli_num_rows($res);
                                                 ?>
                                             </span>
-                                        </h3>
+                                        </h4>
                                     </div>
                                 </div>
-                                <div class="card bg-danger shadow mb-3 col-4" style="max-width: 18rem;">
+                                <div class="card bg-danger shadow mb-3 col-4 border-0" style="max-width: 18rem;">
                                     <div class="card-body">
-                                        <h3 class="text-white">Rejected 
+                                        <h4 class="text-white">Rejected Hospitals:
                                             <span>
                                                 <?php
                                                 $query = "SELECT * FROM hospital WHERE isapprove = 'Rejected'";
@@ -83,7 +82,7 @@
                                                 echo mysqli_num_rows($res);
                                                 ?>
                                             </span>
-                                        </h3>
+                                        </h4>
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +93,6 @@
                 </div>
 
             </div>
-
         </div>
     </div>
 

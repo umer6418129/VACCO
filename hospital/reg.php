@@ -142,7 +142,7 @@
 
     .tooglePass {
         position: absolute;
-        bottom: 127px;
+        bottom: 145px;
         left: 293px;
         cursor: pointer;
     }
@@ -154,7 +154,8 @@
             <h1>Hospital Site</h1>
             <form style="text-align: left;" action="" method="POST" class="login-form">
                 <label for="">Select Country <span style="color: red;">*</span></label>
-                <select class="form-select select2" id="country" name="country">
+                <select class="form-select select2" id="country" name="country" required>
+                    <option value="0" selected disabled>--Select Country--</option>
                     <option value="Afghanistan">Afghanistan</option>
                     <option value="Aland Islands">Aland Islands</option>
                     <option value="Albania">Albania</option>
@@ -408,10 +409,10 @@
                     <option value="Zambia">Zambia</option>
                     <option value="Zimbabwe">Zimbabwe</option>
                 </select><br>
-                <input type="text" name="name" placeholder="Hospital name" />
-                <input type="text" name="email" placeholder="Bussiness email" />
-                <input type="text" name="address" placeholder="Hospital address" />
-                <input type="password" name="password" id="password" placeholder="password" />
+                <input type="text" name="name" placeholder="Hospital name"  required/>
+                <input type="text" name="email" placeholder="Bussiness email"  required/>
+                <input type="text" name="address" placeholder="Hospital address"  required/>
+                <input type="password" name="password" id="password" placeholder="password"  required/>
                 <!-- <input type="password" name="confirmpassword" id="confirmpassword" placeholder="cofirmpassword" /> -->
                 <i class="bi bi-eye-fill tooglePass" id="showPassword"></i>
                 <i class="bi bi-eye-slash-fill tooglePass" id="hidePassword"></i>
