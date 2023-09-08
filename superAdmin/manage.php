@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <?php
+    session_start();
+    include('connection.php');
+    ?>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <?php
-    include('connection.php');
-    session_start();
-    ?>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
@@ -65,8 +65,66 @@
                             <a class="btn btn-danger" href="logout.php">Logout</a>
                         </div>
                         <div class="tab-content">
+                            <!-- username -->
                             <div class="tab-pane active" id="username" role="tabpanel" aria-labelledby="username-tab" tabindex="0">
+                                <form action="" method="POST" class="col-6 mx-auto mt-5">
+                                    <input type="text" name="username" placeholder="Enter username" value="<?php echo $_SESSION['username'] ?>" id="username" class="form-control my-2" required />
+                                    <a id="changeUserNameModalBtn" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#changeUserNameModal">Change</a>
+                                    <!-- modal -->
+                                    <div class="modal fade" id="changeUserNameModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <h3 class="text-dark text-center">Please Enter your password to confirm you indentity ?</h3>
+                                                    <input type="text" name="passwordForUsername" id="Userpassword" class="form-control my-2" placeholder="Enter New Password" required />
+                                                </div>
+                                                <div class="modal-footer justify-content-between">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" id="changeUsername" class="btn btn-primary" name="changeUsernamebtn">Change</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <?php
+                                if (isset($_POST['changeUsernamebtn'])) {
+                                    $setname = $_SESSION['username'];
+                                    $query = "SELECT * FROM super_admin WHERE username = '$setname'";
+                                    $res = mysqli_query($conn, $query);
 
+                                    if (!$res) {
+                                        die("Database query failed: " . mysqli_error($conn));
+                                    }
+
+                                    $userdata = mysqli_fetch_assoc($res);
+                                    $id = $userdata['id'];
+                                    $currentPass = $userdata['password_hash'];
+                                    $currentName = $userdata['username'];
+
+                                    $newusername = $_POST['username'];
+                                    $userPassword = $_POST['passwordForUsername'];
+
+                                    if ($currentPass != $userPassword) {
+                                        echo '<script>
+                                                alert("Please type the correct Password")
+                                            </script>';
+                                    } else {
+                                        $changeUserNameQuery = "UPDATE super_admin SET username = '$newusername' WHERE id = '$id'";
+                                        $checkUpdatedUserName = mysqli_query($conn, $changeUserNameQuery);
+
+                                        if ($checkUpdatedUserName) {
+                                            echo '<script>
+                                                    alert("Username has been Updated")
+                                                    window.location.href = "logout.php"
+                                                </script>';
+                                        } else {
+                                            echo '<script>
+                                                    alert("Something Went Wrong")
+                                                </script>';
+                                        }
+                                    }
+                                }
+                                ?>
                             </div>
                             <!-- Password -->
                             <div class="tab-pane" id="passwordTab" role="tabpanel" aria-labelledby="password-tab" tabindex="0">
@@ -108,7 +166,7 @@
                                         $current = $_POST['currentPassword'];
                                         $new = $_POST['NewPassword'];
 
-                                        if ($current != $currentPass ) {
+                                        if ($current != $currentPass) {
                                             echo '<script>
                                             alert("Please type correct Password")
                                             </script>';
@@ -118,8 +176,9 @@
                                             if ($checkUpdate) {
                                                 echo '<script>
                                                 alert("Password has been Updated")
+                                                window.location.href = "logout.php"
                                                 </script>';
-                                            }else{
+                                            } else {
                                                 echo '<script>
                                                 alert("Something went wrong, kindly try it again !")
                                                 </script>';
