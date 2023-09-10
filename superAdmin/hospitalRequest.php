@@ -27,7 +27,7 @@
     <div class="content container">
         <div class="pt-3">
             <h3 class="h2 mb-0 text-capitalize d-flex align-items-center gap-2">
-                Hospital List
+                Hospital Requests
             </h3>
         </div>
         <div class="row mt-5">

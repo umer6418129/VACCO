@@ -62,7 +62,6 @@
         localStorage.setItem('activeItem', $(this).attr('id'));
       });
     });
-
     function hospital () {
         $.ajax({
             url:"hospitalList.php",    //the page containing php script

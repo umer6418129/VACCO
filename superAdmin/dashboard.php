@@ -130,7 +130,7 @@
                             <div class="row justify-content-between mt-4">
                                 <div class="card bg-success shadow mb-3 col-4 border-0" style="max-width: 18rem;">
                                     <div class="card-body">
-                                        <h4 class="text-white">Current Hospitals:
+                                        <h4 class="text-white">Current Users:
                                             <span>
                                                 <?php
                                                 $query = "SELECT * FROM users WHERE isapprove = 'Accepted'";
@@ -143,7 +143,7 @@
                                 </div>
                                 <div class="card bg-info shadow mb-3 col-4 border-0" style="max-width: 18rem;">
                                     <div class="card-body">
-                                        <h4 class="text-white">Pending Hospitals:
+                                        <h4 class="text-white">User Requests:
                                             <span>
                                                 <?php
                                                 $query = "SELECT * FROM users WHERE isapprove = 'Pending'";
@@ -156,7 +156,7 @@
                                 </div>
                                 <div class="card bg-danger shadow mb-3 col-4 border-0" style="max-width: 18rem;">
                                     <div class="card-body">
-                                        <h4 class="text-white">Rejected Hospitals:
+                                        <h4 class="text-white">Rejected Users:
                                             <span>
                                                 <?php
                                                 $query = "SELECT * FROM users WHERE isapprove = 'Rejected'";
