@@ -34,6 +34,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
+                    <label for="">Select status <span class="text-danger">*</span></label><br>
                         <div class="d-flex justify-content-between">
                             <form action="" method="POST" class="d-flex">
                                 <div>

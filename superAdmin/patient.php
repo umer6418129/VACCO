@@ -15,6 +15,16 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 </head>
+<style>
+    .btn .badge {
+        position: absolute;
+        right: -21px;
+        top: -19px !important;
+        border-radius: 50%;
+        background-color: red;
+        color: white;
+    }
+</style>
 
 <body>
     <?php
@@ -36,23 +46,128 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
+                    <label for="">Select status <span class="text-danger">*</span></label><br>
+                        <div class="d-flex justify-content-between">
+                            <form action="" method="POST" class="d-flex">
+                                <div>
+                                    <select class="form-select w-auto" name="status">
+                                        <option value="Pending">Pending</option>
+                                        <option value="Accepted">Accepted</option>
+                                        <option value="Rejected">Rejected</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-info btn-sm mx-2 text-white" name="searchBtn">Search</button>
+                            </form>
+                            <form action="" method="POST">
+                                <button class="btn btn-primary btn-sm mx-2 text-white" name="Reset">Reset Filter</button>
+                                <a class="btn btn-success" href="userRequest.php">
+                                    <span>Request For Approval</span>
+                                    <span class="badge">
+                                        <?php
+                                        $query = "SELECT * FROM users WHERE isapprove = 'Pending'";
+                                        $result = mysqli_query($conn, $query);
+                                        echo mysqli_num_rows($result);
+                                        ?>
+                                    </span>
+                                </a>
+                            </form>
 
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
-                                <thead class="thead-light thead-50 text-capitalize">
-                                    <tr>
-                                        <th>S no.</th>
-                                        <th>name</th>
-                                        <th>address</th>
-                                        <th>country</th>
-                                        <th>email</th>
-                                        <th>status</th>
-                                        <th>isactive</th>
-                                    </tr>
-                                </thead>
-
+                            
+                                    <?php
+                                    if (isset($_POST['searchBtn'])) {
+                                        $status = $_POST['status'];
+                                        $query = "SELECT * FROM users WHERE isapprove = '$status' ORDER BY isapprove DESC";
+                                        $result = mysqli_query($conn, $query);
+                                        if (mysqli_num_rows($result) != 0) {
+                                            echo "
+                                            <thead class='thead-light thead-50 text-capitalize'>
+                                            <tr>
+                                                 <th>Full Name</th>
+                                                <th>Email/Phone</th>
+                                                <th>Gender</th>
+                                                <th>Status</th
+                                            </tr>
+                                            </thead>
+                                            ";
+                                            while ($data = mysqli_fetch_assoc($result)) {
+                                                echo "
+                                                <tbody>
+                                                    <tr>
+                                                        <td>" . $data['f_name'] . $data['l_name'] . "</td>
+                                                        <td>" . $data['email_phone'] . "</td>
+                                                        <td>" . $data['gender'] . "</td>
+                                                        <td>" . $data['isapprove'] . "</td>
+                                                    </tr>
+                                                    </tbody>
+                                                    ";
+                                            }
+                                        } else {
+                                            echo "
+                                                <h2 class='text-center'>No Data</h2>
+                                            ";
+                                        }
+                                    } else if (isset($_POST['Reset'])) {
+                                        $query = "select * from users";
+                                        $result = mysqli_query($conn, $query);
+                                        if (mysqli_num_rows($result) != 0) {
+                                            echo "
+                                            <thead class='thead-light thead-50 text-capitalize'>
+                                            <tr>
+                                                 <th>Full Name</th>
+                                                <th>Email/Phone</th>
+                                                <th>Gender</th>
+                                                <th>Status</th
+                                            </tr>
+                                            </thead>
+                                            ";
+                                            while ($data = mysqli_fetch_assoc($result)) {
+                                                echo "
+                                                <tbody>
+                                                    <tr>
+                                                        <td>" . $data['f_name'] . $data['l_name'] . "</td>
+                                                        <td>" . $data['email_phone'] . "</td>
+                                                        <td>" . $data['gender'] . "</td>
+                                                        <td>" . $data['isapprove'] . "</td>
+                                                    </tr>
+                                                    </tbody>
+                                                    ";
+                                            }
+                                        } else {
+                                            echo "<h2 class='text-center'>No Data</h2>";
+                                        }
+                                    } else {
+                                        $query = "select * from users";
+                                        $result = mysqli_query($conn, $query);
+                                        if (mysqli_num_rows($result) != 0) {
+                                            echo "
+                                            <thead class='thead-light thead-50 text-capitalize'>
+                                            <tr>
+                                                 <th>Full Name</th>
+                                                <th>Email/Phone</th>
+                                                <th>Gender</th>
+                                                <th>Status</th
+                                            </tr>
+                                            </thead>
+                                            ";
+                                            while ($data = mysqli_fetch_assoc($result)) {
+                                                echo "
+                                                    <tr>
+                                                        <td>" . $data['f_name'] ."". $data['l_name'] . "</td>
+                                                        <td>" . $data['email_phone'] . "</td>
+                                                        <td>" . $data['gender'] . "</td>
+                                                        <td>" . $data['isapprove'] . "</td>
+                                                    </tr>";
+                                            }
+                                        } else {
+                                            echo "<h2 class='text-center'>No Data</h2>";
+                                        }
+                                    }
+                                    ?>
                             </table>
 
                         </div>

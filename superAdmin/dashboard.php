@@ -86,6 +86,88 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row justify-content-between mt-4">
+                                <div class="card bg-success shadow mb-3 col-4 border-0" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        <h4 class="text-white">Available Vaccines:
+                                            <span>
+                                                <?php
+                                                $query = "SELECT * FROM vaccines WHERE availability = 'Available'";
+                                                $res = mysqli_query($conn, $query);
+                                                echo mysqli_num_rows($res);
+                                                ?>
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="card bg-info shadow mb-3 col-4 border-0" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        <h4 class="text-white">Total Vaccines:
+                                            <span>
+                                                <?php
+                                                $query = "SELECT * FROM vaccines";
+                                                $res = mysqli_query($conn, $query);
+                                                echo mysqli_num_rows($res);
+                                                ?>
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="card bg-danger shadow mb-3 col-4 border-0" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        <h4 class="text-white">Unavailable Vaccines:
+                                            <span>
+                                                <?php
+                                                $query = "SELECT * FROM vaccines WHERE availability = 'Unavailable'";
+                                                $res = mysqli_query($conn, $query);
+                                                echo mysqli_num_rows($res);
+                                                ?>
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-between mt-4">
+                                <div class="card bg-success shadow mb-3 col-4 border-0" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        <h4 class="text-white">Current Hospitals:
+                                            <span>
+                                                <?php
+                                                $query = "SELECT * FROM users WHERE isapprove = 'Accepted'";
+                                                $res = mysqli_query($conn, $query);
+                                                echo mysqli_num_rows($res);
+                                                ?>
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="card bg-info shadow mb-3 col-4 border-0" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        <h4 class="text-white">Pending Hospitals:
+                                            <span>
+                                                <?php
+                                                $query = "SELECT * FROM users WHERE isapprove = 'Pending'";
+                                                $res = mysqli_query($conn, $query);
+                                                echo mysqli_num_rows($res);
+                                                ?>
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="card bg-danger shadow mb-3 col-4 border-0" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        <h4 class="text-white">Rejected Hospitals:
+                                            <span>
+                                                <?php
+                                                $query = "SELECT * FROM users WHERE isapprove = 'Rejected'";
+                                                $res = mysqli_query($conn, $query);
+                                                echo mysqli_num_rows($res);
+                                                ?>
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
