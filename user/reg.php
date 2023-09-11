@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Register</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <?php
@@ -21,7 +21,7 @@
     @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
     .login-page {
-        width: 360px;
+        width: 100%;
         padding: 8% 0 0;
         margin: auto;
     }
@@ -142,7 +142,7 @@
 
     .tooglePass {
         position: absolute;
-        bottom: 127px;
+        bottom: 175px;
         left: 293px;
         cursor: pointer;
     }
@@ -151,35 +151,48 @@
 <body>
     <div class="login-page">
         <div class="form">
-            <!-- <h1>Admin</h1> -->
-            <form action="auth.php" method="POST" class="login-form">
-                <input type="text" name="username" placeholder="Enter email or phone no." />
-                <input type="password" name="password_hash" id="password" placeholder="Enter password" />
+            <h1>Register</h1>
+            <form style="text-align: left;" action="" method="POST" class="login-form">
+                <input type="text" name="f_name" placeholder="Enter yout first name" required />
+                <input type="text" name="l_name" placeholder="Enter yout last name" required />
+                <input type="text" name="email" placeholder="Enter your email" required />
+                <input type="password" name="password" id="password" placeholder="password" required />
+                <!-- <input type="password" name="confirmpassword" id="confirmpassword" placeholder="cofirmpassword" /> -->
                 <i class="bi bi-eye-fill tooglePass" id="showPassword"></i>
                 <i class="bi bi-eye-slash-fill tooglePass" id="hidePassword"></i>
-                <button type="submit" name="btn">login</button>
+                <div style="display: flex;">
+                    <span>Male</span> <input class="" type="radio" name="gender" id="male" value="male">
+                    <span>Female</span><input class="" type="radio" name="gender" id="female" value="female">
+                </div>
+                <a href="auth.php">Already have an account?</a>
+                <button type="submit" name="btn">Register</button>
             </form>
-            <a href="reg.php">Regester here if your are new</a>
-
         </div>
     </div>
 
     <?php
     if (isset($_POST['btn'])) {
-        $username = $_POST['username'];
-        $password_hash = $_POST['password_hash'];
-
-        $query = "select * from users where email_phone='$username' and password='$password_hash'";
-        $res = mysqli_query($conn, $query);
-        $total = mysqli_num_rows($res);
-        if ($total == 1) {
-            $_SESSION['f_name'] = $username;
-            echo '<script type="text/javascript">window.location.href = "index.php";</script>';
-            echo '<script type="text/javascript">toastr.success("Login Successfully")</script>';
+        $f_name = $_POST['f_name'];
+        $l_name = $_POST['l_name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $gender = $_POST['gender'];
+        $checkQuery = "SELECT * FROM users WHERE email_phone = '$email'";
+        $checkResult = mysqli_query($conn, $checkQuery);
+        if (mysqli_num_rows($checkResult) > 0) {
+            echo '<script type="text/javascript">toastr.info("Email already exists. Please use a different email.")</script>';
         } else {
-            echo '<script type="text/javascript">toastr.error("Incorrect email/phone or password")</script>';
+            $query = "INSERT INTO users (`f_name`,`l_name` , `email_phone`,`gender`, `password`, `isapprove`, `isactive`, `create_at`) VALUES ('$f_name','$l_name','$email', '$gender','$password','Pending', 0, '')";
+            $res = mysqli_query($conn, $query);
+
+            if ($res) {
+                echo '<script type="text/javascript">toastr.success("Thanks For Register, we can send you an email after approval of your request")</script>';
+            } else {
+                echo '<script type="text/javascript">toastr.error("Something went wrong")</script>';
+            }
         }
     }
+
     ?>
 
 
@@ -202,6 +215,9 @@
             passwordInput.type = 'password';
             hidePasswordIcon.style.display = 'none';
             showPasswordIcon.style.display = 'inline-block';
+        });
+        $(document).ready(function() {
+            $('.select2').select2();
         });
     </script>
 
