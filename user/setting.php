@@ -56,7 +56,7 @@
                         <div class="d-flex justify-content-between">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link text-black active" id="username-tab" data-bs-toggle="tab" data-bs-target="#username" type="button" role="tab" aria-controls="username" aria-selected="true">Change Username</button>
+                                    <button class="nav-link text-black active" id="username-tab" data-bs-toggle="tab" data-bs-target="#username" type="button" role="tab" aria-controls="username" aria-selected="true">Change Email</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link text-black" id="password-tab" data-bs-toggle="tab" data-bs-target="#passwordTab" type="button" role="tab" aria-controls="passwordTab" aria-selected="false">Change Password</button>
@@ -68,7 +68,7 @@
                             <!-- username -->
                             <div class="tab-pane active" id="username" role="tabpanel" aria-labelledby="username-tab" tabindex="0">
                                 <form action="" method="POST" class="col-6 mx-auto mt-5">
-                                    <input type="text" name="username" placeholder="Enter username" value="<?php echo $_SESSION['username'] ?>" id="username" class="form-control my-2" required />
+                                    <input type="text" name="email_phone" placeholder="Enter username" value="<?php echo $_SESSION['f_name'] ?>" id="username" class="form-control my-2" required />
                                     <a id="changeUserNameModalBtn" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#changeUserNameModal">Change</a>
                                     <!-- modal -->
                                     <div class="modal fade" id="changeUserNameModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -89,7 +89,7 @@
                                 <?php
                                 if (isset($_POST['changeUsernamebtn'])) {
                                     $setname = $_SESSION['f_name'];
-                                    $query = "SELECT * FROM users WHERE f_name = '$setname'";
+                                    $query = "SELECT * FROM users WHERE email_phone = '$setname'";
                                     $res = mysqli_query($conn, $query);
 
                                     if (!$res) {
@@ -98,10 +98,10 @@
 
                                     $userdata = mysqli_fetch_assoc($res);
                                     $id = $userdata['id'];
-                                    $currentPass = $userdata['password_hash'];
-                                    $currentName = $userdata['username'];
+                                    $currentPass = $userdata['password'];
+                                    $currentName = $userdata['email_phone'];
 
-                                    $newusername = $_POST['username'];
+                                    $newusername = $_POST['email_phone'];
                                     $userPassword = $_POST['passwordForUsername'];
 
                                     if ($currentPass != $userPassword) {
@@ -109,13 +109,12 @@
                                                 alert("Please type the correct Password")
                                             </script>';
                                     } else {
-                                        $changeUserNameQuery = "UPDATE users SET username = '$newusername' WHERE id = '$id'";
+                                        $changeUserNameQuery = "UPDATE users SET email_phone = '$newusername' WHERE id = '$id'";
                                         $checkUpdatedUserName = mysqli_query($conn, $changeUserNameQuery);
 
                                         if ($checkUpdatedUserName) {
                                             echo '<script>
                                                     alert("Username has been Updated")
-                                                    window.location.href = "logout.php"
                                                 </script>';
                                         } else {
                                             echo '<script>
@@ -154,13 +153,13 @@
 
                                 <?php
                                 if (isset($_POST['changebtn'])) {
-                                    if (isset($_SESSION['username'])) {
-                                        $name = $_SESSION['username'];
-                                        $query = "select * from super_admin where username = '$name'";
+                                    if (isset($_SESSION['f_name'])) {
+                                        $name = $_SESSION['f_name'];
+                                        $query = "select * from users where email_phone = '$name'";
                                         $res = mysqli_query($conn, $query); // Corrected variable name here
                                         $data = mysqli_fetch_assoc($res);
 
-                                        $currentPass = $data['password_hash'];
+                                        $currentPass = $data['password'];
                                         $id = $data['id'];
 
                                         $current = $_POST['currentPassword'];
@@ -171,12 +170,11 @@
                                             alert("Please type correct Password")
                                             </script>';
                                         } else {
-                                            $updateQuery = "update super_admin set password_hash = '$new' where id = '$id'";
+                                            $updateQuery = "update users set password = '$new' where id = '$id'";
                                             $checkUpdate = mysqli_query($conn, $updateQuery);
                                             if ($checkUpdate) {
                                                 echo '<script>
                                                 alert("Password has been Updated")
-                                                window.location.href = "logout.php"
                                                 </script>';
                                             } else {
                                                 echo '<script>
