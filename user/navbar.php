@@ -45,10 +45,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a id="home" class="nav-link sidebar-item" aria-current="page" href="#">Home</a>
+                            <a id="home" class="nav-link sidebar-item" aria-current="page" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a id="hospitals" class="nav-link sidebar-item" aria-current="page" href="#">Hospitals</a>
+                            <a id="hospitals" class="nav-link sidebar-item" aria-current="page" href="hospital.php">Hospitals</a>
                         </li>
                         <li class="nav-item">
                             <a id="myAppointments" class="nav-link sidebar-item" aria-current="page" href="#">My Appointments</a>
@@ -103,22 +103,6 @@
     <footer>
         <!-- place footer here -->
     </footer>
-    <script>
-        // JavaScript to add or remove the active-link class when a link is clicked
-        const navLinks = document.querySelectorAll(".nav-link");
-
-        navLinks.forEach(link => {
-            link.addEventListener("click", function() {
-                // Remove the active-link class from all links
-                navLinks.forEach(link => {
-                    link.classList.remove("active-link");
-                });
-
-                // Add the active-link class to the clicked link
-                this.classList.add("active-link");
-            });
-        });
-    </script>
 
 
     <!-- Bootstrap JavaScript Libraries -->

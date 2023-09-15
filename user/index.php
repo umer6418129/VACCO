@@ -66,7 +66,7 @@
           <h6>We Are Here For You</h6>
           <h1 id="mainHead" class="text-dark img-fluid">Best Vaccination & Better Doctor</h1>
           <span class="text-black-50">Welcome to our website, where we are dedicated to providing you with the best vaccination services and connecting you with top-notch doctors. Your health and well-being are our top priorities, and we are committed to delivering the highest quality care possible. Explore our services and find the best solutions for your healthcare needs. We're here to ensure you receive the best vaccination and better doctor care.</span><br>
-          <button class="btn btn-primary btn-lg my-4">Find Hospitals</button>
+          <a class="btn btn-primary btn-lg my-4 " href='hospital.php'>Find Hospitals</a>
         </div>
       </div>
       <div class="col-lg-7 mt-5">
@@ -80,7 +80,7 @@
       <div class="mt-5">
         <h1>About Us</h1>
         <span class="text-black-50">At COVIDBookingHub, our mission is clear and concise: facilitating your health and well-being. We specialize in top-tier vaccination services and connecting you with exceptional doctors. Our unwavering commitment to your health journey is at the core of everything we do. Discover the convenience and quality of healthcare through COVIDBookingHub today.</span><br>
-        <button class="btn btn-primary btn-lg my-5">Find Hospitals</button>
+        <a class="btn btn-primary btn-lg my-5 " href='hospital.php'>Find Hospitals</a>
         <div class="d-flex justify-content-between container my-5">
           <div class="text-center">
             <h1 class="bi bi-hospital-fill text-primary"></h1>
