@@ -10,9 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
   <?php
-//   session_start();
+  //   session_start();
   include('connection.php');
   ?>
 
@@ -34,9 +35,8 @@
     <?php
     include('navbar.php');
     if (isset($_SESSION['f_name'])) {
-        
     } else {
-        echo "<script>
+      echo "<script>
         window.location.href = 'auth.php'
             </script>";
     }
@@ -44,40 +44,48 @@
   </header>
   <main>
     <div>
-    <div class=" my-5 ms-5">
-    <h1>Find Hospitals</h1>
-    </div>
+      <div class="my-5 mx-5 row row-cols-1 row-cols-md-4 justify-content-between">
+        <div>
+          <h1 class="text-black-50">Find Hospitals</h1>
+        </div>
+        <div>
+          <input id="myInput" type="search" class="form-control mt-2" placeholder="Search Hospital">
 
-    <div class="container">
-    <div class="row">
-
-                <?php
-                $hospitalQuery = "SELECT * FROM hospital WHERE isapprove = 'Accepted' ORDER BY isapprove DESC";
-                $res = mysqli_query($conn,$hospitalQuery);
-                if (mysqli_num_rows($res) != 0) {
-                    while ($data = mysqli_fetch_assoc($res)){
-                        echo'
-                        <div class="col-sm-6 mt-5">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">'  . $data['name'] . "</h5>
-                                    <p class='card-text'>" . $data['address'] . $data['country'] ."</p>
-                                    <a href='' class='btn btn-primary'>Request for Vaccination</a>
-                                </div>
-                            </div>
-                        </div>
-                        ";
-                        
-                    };
-                }
-
-                ?>
-  
-</div>
-    </div>
+        </div>
+      </div>
 
 
-    </div>
+      <div class="container">
+        <div id="noDataMessage" class="mt-3" style="display: none;">
+          <h1 class="text-dark text-center">No data found</h1>
+        </div>
+        <div class="row">
+
+          <?php
+          $hospitalQuery = "SELECT * FROM hospital WHERE isapprove = 'Accepted' ORDER BY isapprove DESC";
+          $res = mysqli_query($conn, $hospitalQuery);
+          if (mysqli_num_rows($res) != 0) {
+            while ($data = mysqli_fetch_assoc($res)) {
+              echo '
+                  <div class="col-sm-6 mt-5 hospital-card">
+                      <div class="card">
+                          <div class="card-body">
+                              <h5 class="card-title">'  . $data['name'] . "</h5>
+                              <p class='card-text'>" . $data['address']. " " . $data['country'] . "</p>
+                              <a href='' class='btn btn-primary'>Request for Test</a>
+                          </div>
+                      </div>
+                  </div>
+              ";
+            };
+          }
+
+          ?>
+
+        </div>
+      </div>
+
+
     </div>
 
   </main>
@@ -85,6 +93,32 @@
     <!-- place footer here -->
   </footer>
   <!-- Bootstrap JavaScript Libraries -->
+
+  <script>
+    $(document).ready(function() {
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        var found = false; // Flag to track if any results were found
+
+        $(".hospital-card").each(function() {
+          var text = $(this).text().toLowerCase();
+          var match = text.indexOf(value) > -1;
+          $(this).toggle(match);
+          if (match) {
+            found = true;
+          }
+        });
+
+        // Display "No data found" message if no results were found
+        if (!found) {
+          $("#noDataMessage").show();
+        } else {
+          $("#noDataMessage").hide();
+        }
+      });
+    });
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
   </script>
 

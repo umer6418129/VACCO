@@ -84,7 +84,7 @@
         <div class="d-flex justify-content-between container my-5">
           <div class="text-center">
             <h1 class="bi bi-hospital-fill text-primary"></h1>
-            <h5 class="text-black-50">Hospitality</h5>
+            <h5 class="text-black-50">Hospitality</h5>03202016607
           </div>
           <div class="text-center">
             <h1 class="bi bi-file-medical-fill text-primary"></h1>
