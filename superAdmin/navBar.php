@@ -16,7 +16,8 @@
     color: #8ce98a !important;
     background-color: rgba(239, 246, 255, 0.1) !important;
   }
-  #user{
+
+  #user {
     position: absolute;
     bottom: 0px;
   }
@@ -28,10 +29,8 @@
     <a href="hospitalList.php" id="envelope" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-hospital-o"></i></a>
     <a href="patient.php" id="patient" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-user"></i></a>
     <a href="vaccineList.php" id="vaccine" class="w3-bar-item w3-button sidebar-item"><i class="bi bi-virus"></i></a>
+    <a href="messages.php" id="message" class="w3-bar-item w3-button sidebar-item"><i class="bi bi-chat-dots-fill"></i></a>
     <a href="manage.php" id="user" class="w3-bar-item w3-button sidebar-item"><i class='fa fa-user-circle'></i></a>
-    <!-- <a href="#" id="search" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-search"></i></a>
-    <a href="#" id="globe" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-globe"></i></a>
-    <a href="#" id="trash" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-trash"></i></a> -->
   </div>
 
   <div class="text-dark" style="float: right;">
@@ -62,16 +61,17 @@
         localStorage.setItem('activeItem', $(this).attr('id'));
       });
     });
-    function hospital () {
-        $.ajax({
-            url:"hospitalList.php",    //the page containing php script
-            // type: "post",    //request type,
-            // dataType: 'json',
-            // data: {registration: "success", name: "xyz", email: "abc@gmail.com"},
-            success:function(result){
-                console.log(result.abc);
-            }
-        });
+
+    function hospital() {
+      $.ajax({
+        url: "hospitalList.php", //the page containing php script
+        // type: "post",    //request type,
+        // dataType: 'json',
+        // data: {registration: "success", name: "xyz", email: "abc@gmail.com"},
+        success: function(result) {
+          console.log(result.abc);
+        }
+      });
     }
   </script>
 

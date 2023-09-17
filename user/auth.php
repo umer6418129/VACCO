@@ -169,7 +169,7 @@
         $username = $_POST['username'];
         $password_hash = $_POST['password_hash'];
 
-        $query = "select * from users where email_phone='$username' and password='$password_hash'";
+        $query = "SELECT * FROM users where email_phone='$username' and password='$password_hash' and isapprove = 'Accepted' ";
         $res = mysqli_query($conn, $query);
         $total = mysqli_num_rows($res);
         if ($total == 1) {

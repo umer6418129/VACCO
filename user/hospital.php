@@ -49,7 +49,6 @@
         </div>
         <div>
           <input id="myInput" type="search" class="form-control mt-2" placeholder="Search Hospital">
-
         </div>
       </div>
 

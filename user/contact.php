@@ -90,7 +90,7 @@
                         $subject = $_POST['subject'];
                         $query = $_POST['query'];
 
-                        $contactQuery = "INSERT INTO contactuser (`name`,`email`,`subject`,`query`,`userid`) VALUES ('$name','$email','$subject','$query','$id') ";
+                        $contactQuery = "INSERT INTO contactuser (`name`,`email`,`subject`,`query`,`userid`,`mark`) VALUES ('$name','$email','$subject','$query','$id','unread') ";
                         $response = mysqli_query($conn, $contactQuery);
 
                         if ($response) {
