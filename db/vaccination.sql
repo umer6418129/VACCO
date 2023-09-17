@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2023 at 10:24 PM
+-- Generation Time: Sep 17, 2023 at 10:55 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `vaccination`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contactuser`
+--
+
+CREATE TABLE `contactuser` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(20) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `subject` varchar(100) DEFAULT NULL,
+  `query` varchar(500) DEFAULT NULL,
+  `userid` bigint(20) DEFAULT NULL,
+  `mark` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contactuser`
+--
+
+INSERT INTO `contactuser` (`id`, `name`, `email`, `subject`, `query`, `userid`, `mark`) VALUES
+(13, 'umer', 'marcrodney2207@gmail.com', 'hospital', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2, 'unread');
 
 -- --------------------------------------------------------
 
@@ -123,6 +146,13 @@ INSERT INTO `vaccines` (`id`, `name`, `formula`, `availability`, `hospital_id`) 
 --
 
 --
+-- Indexes for table `contactuser`
+--
+ALTER TABLE `contactuser`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userid` (`userid`);
+
+--
 -- Indexes for table `hospital`
 --
 ALTER TABLE `hospital`
@@ -153,6 +183,12 @@ ALTER TABLE `vaccines`
 --
 
 --
+-- AUTO_INCREMENT for table `contactuser`
+--
+ALTER TABLE `contactuser`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT for table `hospital`
 --
 ALTER TABLE `hospital`
@@ -179,6 +215,12 @@ ALTER TABLE `vaccines`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `contactuser`
+--
+ALTER TABLE `contactuser`
+  ADD CONSTRAINT `contactuser_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `vaccines`
