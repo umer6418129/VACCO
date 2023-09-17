@@ -56,7 +56,7 @@
                         <div class="d-flex justify-content-between">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link text-black active" id="username-tab" data-bs-toggle="tab" data-bs-target="#username" type="button" role="tab" aria-controls="username" aria-selected="true">Change Email</button>
+                                    <button class="nav-link text-black active" id="username-tab" data-bs-toggle="tab" data-bs-target="#username" type="button" role="tab" aria-controls="username" aria-selected="true">Change Email/Phone</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link text-black" id="password-tab" data-bs-toggle="tab" data-bs-target="#passwordTab" type="button" role="tab" aria-controls="passwordTab" aria-selected="false">Change Password</button>

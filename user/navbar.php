@@ -13,6 +13,9 @@
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 </head>
 <style>
@@ -35,7 +38,7 @@
 </style>
 
 <body>
-    <header>
+    <header class="W-100">
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">COVID<span class="mainHeading">BookingHub</span></a>
@@ -55,6 +58,9 @@
                         </li>
                         <li class="nav-item">
                             <a id="viewResults" class="nav-link sidebar-item" aria-current="page" href="#">View Results</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="viewResults" class="nav-link sidebar-item" aria-current="page" href="contact.php">Contact Us</a>
                         </li>
                         <!-- <li class="nav-item dropdown">
                             <a id="" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -87,7 +93,7 @@
                         ';
                     }
                     ?>
-                    
+
                     <!-- <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>

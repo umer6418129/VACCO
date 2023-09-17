@@ -31,8 +31,7 @@
 </style>
 
 <body>
-  <header>
-    <?php
+     <?php
     include('navbar.php');
     if (isset($_SESSION['f_name'])) {
     } else {
@@ -41,7 +40,7 @@
             </script>";
     }
     ?>
-  </header>
+ 
   <main>
     <div>
       <div class="my-5 mx-5 row row-cols-1 row-cols-md-4 justify-content-between">

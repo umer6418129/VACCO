@@ -30,6 +30,11 @@
     margin-bottom: 12px;
     line-height: 1.2;
   }
+  @media screen and (max-width:752px) {
+    .noShow{
+      display: none !important;
+    }
+  }
 </style>
 
 <body>
@@ -64,27 +69,27 @@
       <div class="col-lg-5 col-xl-5 mt-5">
         <div>
           <h6>We Are Here For You</h6>
-          <h1 id="mainHead" class="text-dark img-fluid">Best Vaccination & Better Doctor</h1>
+          <h1 id="mainHead" class="text-dark fs-1">Best Vaccination & Better Doctor</h1>
           <span class="text-black-50">Welcome to our website, where we are dedicated to providing you with the best vaccination services and connecting you with top-notch doctors. Your health and well-being are our top priorities, and we are committed to delivering the highest quality care possible. Explore our services and find the best solutions for your healthcare needs. We're here to ensure you receive the best vaccination and better doctor care.</span><br>
           <a class="btn btn-primary btn-lg my-4 " href='hospital.php'>Find Hospitals</a>
         </div>
       </div>
-      <div class="col-lg-7 mt-5">
+      <div class="col-lg-7 mt-5 noShow">
         <img class="img-fluid my-5 mx-5" src="./static_images/homePageImage.png" alt="">
       </div>
     </div>
     <div class="col-12 container-fluid row row-cols-1 row-cols-md-2 my-5">
-      <div class=" ">
+      <div class="noShow">
         <img class="img-fluid" src="./static_images/aboutUs.png" alt="">
       </div>
       <div class="mt-5">
-        <h1>About Us</h1>
+        <h1 class="fs-1">About Us</h1>
         <span class="text-black-50">At COVIDBookingHub, our mission is clear and concise: facilitating your health and well-being. We specialize in top-tier vaccination services and connecting you with exceptional doctors. Our unwavering commitment to your health journey is at the core of everything we do. Discover the convenience and quality of healthcare through COVIDBookingHub today.</span><br>
         <a class="btn btn-primary btn-lg my-5 " href='hospital.php'>Find Hospitals</a>
-        <div class="d-flex justify-content-between container my-5">
+        <div  class="row row-cols-1 row-cols-md-3 justify-content-between container my-5 noShow">
           <div class="text-center">
             <h1 class="bi bi-hospital-fill text-primary"></h1>
-            <h5 class="text-black-50">Hospitality</h5>03202016607
+            <h5 class="text-black-50">Hospitality</h5>
           </div>
           <div class="text-center">
             <h1 class="bi bi-file-medical-fill text-primary"></h1>
