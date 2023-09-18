@@ -20,14 +20,13 @@
 
 <body>
     <?php
-    $Id = $_GET['id'] ?? "";
-    $Name = $_GET['name'] ?? "";
-    $email = $_GET['email'] ?? "";
-    $subject = $_GET['subject'] ?? "";
-    $query = $_GET['query'] ?? "";
-
     if (isset($_SESSION['username'])) {
         include('navBar.php');
+        $Id = $_GET['id'] ?? "";
+        $Name = $_GET['name'] ?? "";
+        $email = $_GET['email'] ?? "";
+        $subject = $_GET['subject'] ?? "";
+        $query = $_GET['query'] ?? "";
     } else {
         header('location:auth.php');
     }
@@ -42,9 +41,56 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div>
+                        <div class="d-flex justify-content-between">
                             <a class="btn btn-secondary" href="messages.php"><i class="bi bi-arrow-left"></i>Back</a>
+                            <form action="" method="POST">
+                                <input type="hidden" name="id" value="<?php echo $Id ?>">
+                                <button type="submit" class="btn btn-success" name="markBtn">Mark as Read</button>
+                            </form>
                         </div>
+
+                        <?php
+                            if (isset($_POST['markBtn'])) {
+                                $id = $_POST['id'];
+                                $markQuery = "UPDATE contactuser SET mark = 'read' WHERE id='$id'";
+                                $markRes = mysqli_query($conn,$markQuery);
+                                if ($markRes) {
+                                    echo '
+                                    <div class="toast-container position-fixed top-0 end-0 p-3 ">
+                                        <div id="liveToast" class="toast show bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+                                            <div class="toast-header justify-content-between">
+                                                <div>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                                </div>
+                                            </div>
+                                            <div class="toast-body text-white">
+                                                Marked! Readed Message
+                                            </div>
+                                        </div>
+                                    </div>
+                                    ';
+                                }else{
+                                    echo '
+                                    <div class="toast-container position-fixed top-0 end-0 p-3 ">
+                                        <div id="liveToast" class="toast show bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+                                            <div class="toast-header justify-content-between">
+                                                <div>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                                </div>
+                                            </div>
+                                            <div class="toast-body text-white">
+                                                Oops! Something went wrong
+                                            </div>
+                                        </div>
+                                    </div>
+                                    ';
+                                }
+                            }
+                        ?>
                     </div>
                     <div class="card-body">
                         <div class="">

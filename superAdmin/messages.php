@@ -52,19 +52,7 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
                             <div>
-                                <input id="myInput" type="search" class="form-control mt-2" placeholder="Search Hospital">
-                            </div>
-                            <div>
-                                <a class="btn btn-success" href="">
-                                    <span>New Messages</span>
-                                    <span class="badge">
-                                        <?php
-                                        $query = "SELECT * from contactuser WHERE mark = 'unread'";
-                                        $result = mysqli_query($conn, $query);
-                                        echo mysqli_num_rows($result);
-                                        ?>
-                                    </span>
-                                </a>
+                                <input id="myInput" type="search" class="form-control mt-2" placeholder="Search Message">
                             </div>
                         </div>
                     </div>
@@ -82,36 +70,27 @@
                                                     <th>Name</th>
                                                     <th>Email</th>
                                                     <th>Subject</th>
-                                                    <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
                                             ";
 
                                         while ($data = mysqli_fetch_assoc($result)) {
-                                            $statusClass = ($data['mark'] === 'unread') ? 'unread-row' : ''; // Check the 'mark' value
+                                            $statusClass = ($data['mark'] === 'unread') ? 'unread-row' : '';
 
                                             echo "
                                                 <tr class='data $statusClass'>
                                                     <td>" . $data['name'] . "</td>
                                                     <td>" . $data['email'] . "</td>
                                                     <td>" . $data['subject'] . "</td>
-                                                    <td>" . $data['mark'] . "</td>
                                                     <td class='d-flex'>
                                                         <a href='./manageMsg/delMsg.php ?id=$data[id]' class='btn btn-danger btn-sm mx-2' name='deleteRecord'>Delete</a>
                                                         <form action='' method='POST'>
                                                         <input type='hidden' name='viewId' value='" . $data['id'] . "'>
-                                                        <a type='submit' href='view.php ?id=$data[id]&name=$data[name]&email=$data[email]&subject=$data[subject]&query=$data[query]' class='btn btn-success btn-sm' name='view'>View</a>
+                                                        <a type='submit' href='view.php ?id=$data[id]&name=$data[name]&email=$data[email]&subject=$data[subject]&query=$data[query]' class='btn btn-success btn-sm' name='viewBtn'>View</a>
                                                         </form>
                                                     </td>
                                                 </tr>
                                             ";
-                                            if (isset($_POST['view'])) {
-                                                $viewId = $_POST['viewId'];
-                                                $viewQuery = "UPDATE contactuser
-                                                SET mark = 'read'
-                                                WHERE id='$viewId'";
-                                                $delResult = mysqli_query($conn, $viewQuery);
-                                            }
                                         }
                                     } else {
                                         echo "

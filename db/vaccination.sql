@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2023 at 10:55 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Sep 18, 2023 at 07:54 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,17 +32,19 @@ CREATE TABLE `contactuser` (
   `name` varchar(20) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `subject` varchar(100) DEFAULT NULL,
-  `query` varchar(500) DEFAULT NULL,
+  `query` varchar(2000) DEFAULT NULL,
   `userid` bigint(20) DEFAULT NULL,
   `mark` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `contactuser`
 --
 
 INSERT INTO `contactuser` (`id`, `name`, `email`, `subject`, `query`, `userid`, `mark`) VALUES
-(13, 'umer', 'marcrodney2207@gmail.com', 'hospital', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2, 'unread');
+(13, 'umer', 'marcrodney2207@gmail.com', 'hospital', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2, 'read'),
+(18, 'Umer', 'admin.aptechorangi@gmail.com', 'umer', 'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions', 1, 'read'),
+(19, 'Umer', 'admin.aptechorangi@gmail.com', 'umer', 'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions', 1, 'read');
 
 -- --------------------------------------------------------
 
@@ -60,7 +62,7 @@ CREATE TABLE `hospital` (
   `isapprove` varchar(50) DEFAULT NULL,
   `isactive` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hospital`
@@ -84,7 +86,7 @@ CREATE TABLE `super_admin` (
   `username` varchar(200) DEFAULT NULL,
   `password_hash` varchar(200) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `super_admin`
@@ -109,7 +111,7 @@ CREATE TABLE `users` (
   `isapprove` varchar(30) DEFAULT NULL,
   `isactive` int(11) DEFAULT NULL,
   `create_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
@@ -132,7 +134,7 @@ CREATE TABLE `vaccines` (
   `formula` varchar(100) DEFAULT NULL,
   `availability` varchar(50) DEFAULT NULL,
   `hospital_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `vaccines`
@@ -186,7 +188,7 @@ ALTER TABLE `vaccines`
 -- AUTO_INCREMENT for table `contactuser`
 --
 ALTER TABLE `contactuser`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `hospital`
