@@ -56,30 +56,30 @@
                     </div>
                     <div class="row row-cols-1 row-cols-md-2">
                         <div class="my-2 ">
-                            <input type="text" name="name" placeholder="Patient name" id="" class="form-control ">
+                            <input type="text" name="name" placeholder="Patient name" id="" class="form-control " required>
                         </div>
                         <div class="my-2 ">
-                            <input type="text" name="email" placeholder="Email" id="" class="form-control ">
+                            <input type="text" name="email" placeholder="Email" id="" class="form-control " required>
                         </div>
                         <div class="my-2 ">
-                            <input type="text" name="age" placeholder="Patient Age" id="" class="form-control ">
+                            <input type="text" name="age" placeholder="Patient Age" id="" class="form-control " required>
                         </div>
                         <div class="my-2 ">
-                            <input type="text" name="address" placeholder="Write complete address" id="" class="form-control ">
+                            <input type="text" name="address" placeholder="Write complete address" id="" class="form-control " required>
                         </div>
                         <div class="my-2 ">
-                            <input type="text" name="bloodGroup" placeholder="Patient blood group" id="" class="form-control ">
+                            <input type="text" name="bloodGroup" placeholder="Patient blood group" id="" class="form-control " required>
                         </div>
                     </div>
                     <h4 class="mt-3">Your availabity</h4>
                     <div class="row row-cols-1 row-cols-md-2 mt-4">
                         <div class="col-6">
                             <label for="">From Date</label>
-                            <input type="date" name="from" id="" class="form-control ">
+                            <input type="date" name="from" id="" class="form-control " required>
                         </div>
                         <div class="col-6">
                             <label for="">To Date</label>
-                            <input type="date" name="to" id="" class="form-control ">
+                            <input type="date" name="to" id="" class="form-control " required>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success mt-4" name="reqBtn">Submit</button>
