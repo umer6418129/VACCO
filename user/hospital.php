@@ -70,7 +70,7 @@
                           <div class="card-body">
                               <h5 class="card-title">'  . $data['name'] . "</h5>
                               <p class='card-text'>" . $data['address']. " " . $data['country'] . "</p>
-                              <a href='' class='btn btn-primary'>Request for Test</a>
+                              <a href='requestForm.php ?id=$data[id]' class='btn btn-primary'>Request for Test</a>
                           </div>
                       </div>
                   </div>

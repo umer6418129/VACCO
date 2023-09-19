@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2023 at 07:54 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Sep 19, 2023 at 09:31 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,10 +32,10 @@ CREATE TABLE `contactuser` (
   `name` varchar(20) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `subject` varchar(100) DEFAULT NULL,
-  `query` varchar(2000) DEFAULT NULL,
+  `query` varchar(500) DEFAULT NULL,
   `userid` bigint(20) DEFAULT NULL,
   `mark` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `contactuser`
@@ -43,8 +43,7 @@ CREATE TABLE `contactuser` (
 
 INSERT INTO `contactuser` (`id`, `name`, `email`, `subject`, `query`, `userid`, `mark`) VALUES
 (13, 'umer', 'marcrodney2207@gmail.com', 'hospital', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2, 'read'),
-(18, 'Umer', 'admin.aptechorangi@gmail.com', 'umer', 'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions', 1, 'read'),
-(19, 'Umer', 'admin.aptechorangi@gmail.com', 'umer', 'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions', 1, 'read');
+(15, 'Umer farooq', 'marcrodney2207@gmail.com', 'hospital', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 'read');
 
 -- --------------------------------------------------------
 
@@ -62,7 +61,7 @@ CREATE TABLE `hospital` (
   `isapprove` varchar(50) DEFAULT NULL,
   `isactive` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `hospital`
@@ -86,7 +85,7 @@ CREATE TABLE `super_admin` (
   `username` varchar(200) DEFAULT NULL,
   `password_hash` varchar(200) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `super_admin`
@@ -94,6 +93,32 @@ CREATE TABLE `super_admin` (
 
 INSERT INTO `super_admin` (`id`, `username`, `password_hash`, `create_at`) VALUES
 (1, 'Admin@Sitee', 'Admin@123', '2023-09-06 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_request`
+--
+
+CREATE TABLE `test_request` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `age` varchar(100) DEFAULT NULL,
+  `home_address` varchar(100) DEFAULT NULL,
+  `blood_group` varchar(50) DEFAULT NULL,
+  `availabity_from` datetime DEFAULT NULL,
+  `availabity_to` datetime DEFAULT NULL,
+  `hospital_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `test_request`
+--
+
+INSERT INTO `test_request` (`id`, `name`, `email`, `age`, `home_address`, `blood_group`, `availabity_from`, `availabity_to`, `hospital_id`, `user_id`) VALUES
+(1, 'umer', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O', '2023-09-14 00:00:00', '2023-09-28 00:00:00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -111,7 +136,7 @@ CREATE TABLE `users` (
   `isapprove` varchar(30) DEFAULT NULL,
   `isactive` int(11) DEFAULT NULL,
   `create_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -134,7 +159,7 @@ CREATE TABLE `vaccines` (
   `formula` varchar(100) DEFAULT NULL,
   `availability` varchar(50) DEFAULT NULL,
   `hospital_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `vaccines`
@@ -168,6 +193,14 @@ ALTER TABLE `super_admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `test_request`
+--
+ALTER TABLE `test_request`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `hospital_id` (`hospital_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -188,7 +221,7 @@ ALTER TABLE `vaccines`
 -- AUTO_INCREMENT for table `contactuser`
 --
 ALTER TABLE `contactuser`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `hospital`
@@ -200,6 +233,12 @@ ALTER TABLE `hospital`
 -- AUTO_INCREMENT for table `super_admin`
 --
 ALTER TABLE `super_admin`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `test_request`
+--
+ALTER TABLE `test_request`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -223,6 +262,13 @@ ALTER TABLE `vaccines`
 --
 ALTER TABLE `contactuser`
   ADD CONSTRAINT `contactuser_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `test_request`
+--
+ALTER TABLE `test_request`
+  ADD CONSTRAINT `test_request_ibfk_1` FOREIGN KEY (`hospital_id`) REFERENCES `hospital` (`id`),
+  ADD CONSTRAINT `test_request_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `vaccines`
