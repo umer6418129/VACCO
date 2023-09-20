@@ -71,6 +71,7 @@
                               <h5 class="card-title">'  . $data['name'] . "</h5>
                               <p class='card-text'>" . $data['address']. " " . $data['country'] . "</p>
                               <a href='requestForm.php ?id=$data[id]' class='btn btn-primary'>Request for Test</a>
+                              <a href='requestVaccineForm.php ?id=$data[id]' class='btn btn-primary'>Request for Vaccination</a>
                           </div>
                       </div>
                   </div>

@@ -54,7 +54,7 @@
                             <a id="hospitals" class="nav-link sidebar-item" aria-current="page" href="hospital.php">Hospitals</a>
                         </li>
                         <li class="nav-item">
-                            <a id="myAppointments" class="nav-link sidebar-item" aria-current="page" href="#">My Appointments</a>
+                            <a id="myAppointments" class="nav-link sidebar-item" aria-current="page" href="myAppointment.php">My Appointments</a>
                         </li>
                         <li class="nav-item">
                             <a id="viewResults" class="nav-link sidebar-item" aria-current="page" href="#">View Results</a>

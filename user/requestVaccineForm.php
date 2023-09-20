@@ -35,6 +35,10 @@
     include('navbar.php');
     if (isset($_SESSION['f_name'])) {
         $Id = $_GET['id'] ?? "";
+
+        $getVaccine = "SELECT * FROM `vaccines` WHERE hospital_id = '$Id'";
+        $responseVaccine = mysqli_query($conn, $getVaccine) or die('no vaccine');
+        // $vaccineName = mysqli_fetch_assoc($responseVaccine);
     } else {
         echo "<script>
         window.location.href = 'auth.php'
@@ -50,7 +54,7 @@
                 </div>
             </div>
             <div class="container">
-                <form action="requestForm.php" method="POST">
+                <form action="requestVaccineForm.php" method="POST">
                     <div>
                         <input name="hospital_id" type='hidden' value="<?php echo $Id; ?> " id='req_id'>
                     </div>
@@ -69,6 +73,18 @@
                         </div>
                         <div class="my-2 ">
                             <input type="text" name="bloodGroup" placeholder="Patient blood group" id="" class="form-control " required>
+                        </div>
+                        <div>
+                            <select name="vaccine" id="" class="form-select">
+                                <option value="0" selected disabled>--Select Vaccine--</option>
+                                <?php
+                                while ($vaccine = mysqli_fetch_assoc($responseVaccine)) {
+                                    echo "<option value='" . $vaccine['name'] . "'>" . $vaccine['name'] . "</option>";
+                                }
+                                ?>
+                            </select>
+
+
                         </div>
                     </div>
                     <h4 class="mt-3">Your availabity</h4>
@@ -99,11 +115,12 @@
             $age = $_POST['age'];
             $address = $_POST['address'];
             $bloodGroup = $_POST['bloodGroup'];
+            $vaccine = $_POST['vaccine'];
             $from = $_POST['from'];
             $to = $_POST['to'];
             $hospital_id = $_POST['hospital_id'];
 
-            $insertQuery = "INSERT INTO test_request (`name`, `email`, `age`, `home_address`, `blood_group`, `availabity_from`, `availabity_to`,`isapprove`,`type` , `hospital_id`, `user_id`) VALUES ('$name', '$email', '$age', '$address', '$bloodGroup', '$from', '$to','pending' , 'test' ,'$hospital_id', '$usid')";
+            $insertQuery = "INSERT INTO `test_request` (`name`, `email`, `age`, `home_address`, `blood_group`, `vaccine`, `availabity_from`, `availabity_to`, `isapprove`, `type`, `hospital_id`, `user_id`) VALUES ('$name', '$email', '$age', '$address', '$bloodGroup', '$vaccine', '$from', '$to', 'pending', 'vaccine', '$hospital_id', '$usid')";
             $res = mysqli_query($conn, $insertQuery);
 
             if ($res) {
