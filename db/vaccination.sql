@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2023 at 09:31 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Sep 20, 2023 at 08:02 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,7 @@ CREATE TABLE `contactuser` (
   `query` varchar(500) DEFAULT NULL,
   `userid` bigint(20) DEFAULT NULL,
   `mark` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `contactuser`
@@ -61,7 +61,7 @@ CREATE TABLE `hospital` (
   `isapprove` varchar(50) DEFAULT NULL,
   `isactive` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hospital`
@@ -85,7 +85,7 @@ CREATE TABLE `super_admin` (
   `username` varchar(200) DEFAULT NULL,
   `password_hash` varchar(200) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `super_admin`
@@ -93,6 +93,20 @@ CREATE TABLE `super_admin` (
 
 INSERT INTO `super_admin` (`id`, `username`, `password_hash`, `create_at`) VALUES
 (1, 'Admin@Sitee', 'Admin@123', '2023-09-06 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_approval`
+--
+
+CREATE TABLE `test_approval` (
+  `id` bigint(20) NOT NULL,
+  `isapprove` varchar(20) DEFAULT NULL,
+  `reqId` bigint(20) DEFAULT NULL,
+  `hospitalId` bigint(20) DEFAULT NULL,
+  `userId` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -107,18 +121,22 @@ CREATE TABLE `test_request` (
   `age` varchar(100) DEFAULT NULL,
   `home_address` varchar(100) DEFAULT NULL,
   `blood_group` varchar(50) DEFAULT NULL,
-  `availabity_from` datetime DEFAULT NULL,
-  `availabity_to` datetime DEFAULT NULL,
+  `availabity_from` date DEFAULT NULL,
+  `availabity_to` date DEFAULT NULL,
+  `isapprove` varchar(50) NOT NULL,
   `hospital_id` bigint(20) DEFAULT NULL,
   `user_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `test_request`
 --
 
-INSERT INTO `test_request` (`id`, `name`, `email`, `age`, `home_address`, `blood_group`, `availabity_from`, `availabity_to`, `hospital_id`, `user_id`) VALUES
-(1, 'umer', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O', '2023-09-14 00:00:00', '2023-09-28 00:00:00', 1, 1);
+INSERT INTO `test_request` (`id`, `name`, `email`, `age`, `home_address`, `blood_group`, `availabity_from`, `availabity_to`, `isapprove`, `hospital_id`, `user_id`) VALUES
+(1, 'umer', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O', '2023-09-14', '2023-09-28', 'pending', 1, 1),
+(2, 'Umer', 'admin.aptechorangi@gmail.com', '25', 'ABC avenue', 'any', '2023-09-22', '2023-09-29', 'pending', 2, 1),
+(3, 'Eureka', 'umer2207e@aptechorangi.com', '25', 'ABC avenue', 'any', '2023-09-21', '2023-09-21', 'pending', 2, 1),
+(4, 'Eureka', 'umer2207e@aptechorangi.com', '25', 'ABC avenue', 'any', '2023-09-21', '2023-09-28', 'pending', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -136,7 +154,7 @@ CREATE TABLE `users` (
   `isapprove` varchar(30) DEFAULT NULL,
   `isactive` int(11) DEFAULT NULL,
   `create_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
@@ -159,7 +177,7 @@ CREATE TABLE `vaccines` (
   `formula` varchar(100) DEFAULT NULL,
   `availability` varchar(50) DEFAULT NULL,
   `hospital_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `vaccines`
@@ -191,6 +209,15 @@ ALTER TABLE `hospital`
 --
 ALTER TABLE `super_admin`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `test_approval`
+--
+ALTER TABLE `test_approval`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `reqId` (`reqId`),
+  ADD KEY `hospitalId` (`hospitalId`),
+  ADD KEY `userId` (`userId`);
 
 --
 -- Indexes for table `test_request`
@@ -236,10 +263,16 @@ ALTER TABLE `super_admin`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `test_approval`
+--
+ALTER TABLE `test_approval`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `test_request`
 --
 ALTER TABLE `test_request`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -262,6 +295,14 @@ ALTER TABLE `vaccines`
 --
 ALTER TABLE `contactuser`
   ADD CONSTRAINT `contactuser_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `test_approval`
+--
+ALTER TABLE `test_approval`
+  ADD CONSTRAINT `test_approval_ibfk_1` FOREIGN KEY (`reqId`) REFERENCES `test_request` (`id`),
+  ADD CONSTRAINT `test_approval_ibfk_2` FOREIGN KEY (`hospitalId`) REFERENCES `hospital` (`id`),
+  ADD CONSTRAINT `test_approval_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `test_request`

@@ -103,7 +103,7 @@
             $to = $_POST['to'];
             $hospital_id = $_POST['hospital_id'];
 
-            $insertQuery = "INSERT INTO test_request (`name`, `email`, `age`, `home_address`, `blood_group`, `availabity_from`, `availabity_to`, `hospital_id`, `user_id`) VALUES ('$name', '$email', '$age', '$address', '$bloodGroup', '$from', '$to', '$hospital_id', '$usid')";
+            $insertQuery = "INSERT INTO test_request (`name`, `email`, `age`, `home_address`, `blood_group`, `availabity_from`, `availabity_to`,`isapprove`, `hospital_id`, `user_id`) VALUES ('$name', '$email', '$age', '$address', '$bloodGroup', '$from', '$to','pending' ,'$hospital_id', '$usid')";
             $res = mysqli_query($conn, $insertQuery);
 
             if ($res) {

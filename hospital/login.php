@@ -172,7 +172,7 @@
         $total = mysqli_num_rows($res);
         if ($total == 1) {
             $_SESSION['name'] = $name;
-            // echo '<script type="text/javascript">window.location.href = "dashboard.php";</script>';
+            echo '<script type="text/javascript">window.location.href = "dashboard.php";</script>';
             echo '<script type="text/javascript">toastr.success("Login Successfully")</script>';
         } else {
             echo '<script type="text/javascript">toastr.error("Incorrect name or password")</script>';
