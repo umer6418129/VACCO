@@ -26,7 +26,9 @@
 <body>
   <div class="w3-sidebar w3-bar-block w3-xxlarge" style="width:70px; color:white; background-color: #073b74;">
     <a href="dashboard.php" id="dashboard" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-dashboard"></i></a>
-    <a href="testReq.php" id="list" class="w3-bar-item w3-button sidebar-item"><i class="bi bi-card-list"></i></a>
+    <a href="testAppointmentList.php" id="list" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-thermometer-0"></i></a>
+    <a href="vaccineReq.php" id="vaccine" class="w3-bar-item w3-button sidebar-item"><i class='fa fa-eyedropper'></i></a>
+    <!-- <a href="vaccineReq.php" id="result" class="w3-bar-item w3-button sidebar-item"><i class='bi bi-card-checklist'></i></a> -->
     <!-- <a href="patient.php" id="patient" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-user"></i></a>
     <a href="vaccineList.php" id="vaccine" class="w3-bar-item w3-button sidebar-item"><i class="bi bi-virus"></i></a>
     <a href="messages.php" id="message" class="w3-bar-item w3-button sidebar-item"><i class="bi bi-chat-dots-fill"></i></a>
