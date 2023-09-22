@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital-List</title>
+    <title>Covid-Test Appointment List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <?php
@@ -83,7 +83,7 @@
                                     <span>New Appointment Request</span>
                                     <span class="badge">
                                         <?php
-                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test' AND isapprove = 'accepted'";
+                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test' AND isapprove = 'pending'";
                                         $result = mysqli_query($conn, $query);
                                         echo mysqli_num_rows($result);
                                         ?>
@@ -96,37 +96,37 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive overflow-auto h-100 w-100">
-                            <table class="table">
-                                <thead class="thead-light thead-50 text-capitalize">
+                            <table class="table col-md-9" style="overflow-x: auto">
+                                <thead class="thead-light thead-50 text-capitalize" style="width:auto">
                                     <?php
                                     if (isset($_POST['searchBtn'])) {
                                         $status = $_POST['status'];
-                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test'";
+                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test' AND isapprove = 'accepted'";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
                                             echo "
                                             <tr>
-                                                <th>Appointment ID#</th>
-                                                <th>Patient name</th>
-                                                <th>Patient email</th>
-                                                <th>Patient age</th>
-                                                <th>address</th>
-                                                <th>Blood group</th>
-                                                <th>Availabity from</th>
-                                                <th>Availabity to</th>
+                                            <th>Patient name</th>
+                                            <th>Patient email</th>
+                                            <th>Patient age</th>
+                                            <th>address</th>
+                                            <th>Blood group</th>
+                                            <th>Availabity from</th>
+                                            <th>Availabity to</th>
+                                            <th>Appointment ID#</th>
                                             </tr>
                                             ";
                                             while ($data = mysqli_fetch_assoc($result)) {
                                                 echo "
                                                     <tr>
-                                                        <td class='fw-bold'>" . $data['id'] . "</td>
-                                                        <td>" . $data['name'] . "</td>
-                                                        <td>" . $data['email'] . "</td>
-                                                        <td>" . $data['age'] . "</td>
-                                                        <td>" . $data['home_address'] . "</td>
-                                                        <td>" . $data['blood_group'] . "</td>
-                                                        <td>" . $data['availabity_from'] . "</td>
-                                                        <td>" . $data['availabity_to'] . "</td>
+                                                    <td>" . $data['name'] . "</td>
+                                                    <td>" . $data['email'] . "</td>
+                                                    <td>" . $data['age'] . "</td>
+                                                    <td>" . $data['home_address'] . "</td>
+                                                    <td>" . $data['blood_group'] . "</td>
+                                                    <td>" . $data['availabity_from'] . "</td>
+                                                    <td>" . $data['availabity_to'] . "</td>
+                                                    <td class='fw-bold'>" . $data['id'] . "</td>
                                                     </tr>";
                                             }
                                         } else {
@@ -135,64 +135,64 @@
                                             ";
                                         }
                                     } else if (isset($_POST['Reset'])) {
-                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test'";
+                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test' AND isapprove = 'accepted'";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
                                             echo "
                                             <tr>
+                                            <th>Patient name</th>
+                                            <th>Patient email</th>
+                                            <th>Patient age</th>
+                                            <th>address</th>
+                                            <th>Blood group</th>
+                                            <th>Availabity from</th>
+                                            <th>Availabity to</th>
                                             <th>Appointment ID#</th>
-                                                <th>Patient name</th>
-                                                <th>Patient email</th>
-                                                <th>Patient age</th>
-                                                <th>address</th>
-                                                <th>Blood group</th>
-                                                <th>Availabity from</th>
-                                                <th>Availabity to</th>
                                             </tr>
                                             ";
                                             while ($data = mysqli_fetch_assoc($result)) {
                                                 echo "
                                                     <tr>
-                                                       <td class='fw-bold'>" . $data['id'] . "</td>
-                                                       <td>" . $data['name'] . "</td>
-                                                        <td>" . $data['email'] . "</td>
-                                                        <td>" . $data['age'] . "</td>
-                                                        <td>" . $data['home_address'] . "</td>
-                                                        <td>" . $data['blood_group'] . "</td>
-                                                        <td>" . $data['availabity_from'] . "</td>
-                                                        <td>" . $data['availabity_to'] . "</td>
+                                                    <td>" . $data['name'] . "</td>
+                                                    <td>" . $data['email'] . "</td>
+                                                    <td>" . $data['age'] . "</td>
+                                                    <td>" . $data['home_address'] . "</td>
+                                                    <td>" . $data['blood_group'] . "</td>
+                                                    <td>" . $data['availabity_from'] . "</td>
+                                                    <td>" . $data['availabity_to'] . "</td>
+                                                    <td class='fw-bold'>" . $data['id'] . "</td>
                                                     </tr>";
                                             }
                                         } else {
                                             echo "<h2 class='text-center'>No Data</h2>";
                                         }
                                     } else {
-                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test'";
+                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test' AND isapprove = 'accepted'";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
                                             echo "
                                             <tr>
+                                            <th>Patient name</th>
+                                            <th>Patient email</th>
+                                            <th>Patient age</th>
+                                            <th>address</th>
+                                            <th>Blood group</th>
+                                            <th>Availabity from</th>
+                                            <th>Availabity to</th>
                                             <th>Appointment ID#</th>
-                                                <th>Patient name</th>
-                                                <th>Patient email</th>
-                                                <th>Patient age</th>
-                                                <th>address</th>
-                                                <th>Blood group</th>
-                                                <th>Availabity from</th>
-                                                <th>Availabity to</th>
                                             </tr>
                                             ";
                                             while ($data = mysqli_fetch_assoc($result)) {
                                                 echo "
                                                     <tr>
-                                                       <td class='fw-bold'>" . $data['id'] . "</td>
-                                                       <td>" . $data['name'] . "</td>
-                                                        <td>" . $data['email'] . "</td>
-                                                        <td>" . $data['age'] . "</td>
-                                                        <td>" . $data['home_address'] . "</td>
-                                                        <td>" . $data['blood_group'] . "</td>
-                                                        <td>" . $data['availabity_from'] . "</td>
-                                                        <td>" . $data['availabity_to'] . "</td>
+                                                    <td>" . $data['name'] . "</td>
+                                                    <td>" . $data['email'] . "</td>
+                                                    <td>" . $data['age'] . "</td>
+                                                    <td>" . $data['home_address'] . "</td>
+                                                    <td>" . $data['blood_group'] . "</td>
+                                                    <td>" . $data['availabity_from'] . "</td>
+                                                    <td>" . $data['availabity_to'] . "</td>
+                                                    <td class='fw-bold'>" . $data['id'] . "</td>
                                                     </tr>";
                                             }
                                         } else {

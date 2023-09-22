@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Test-Request</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,7 +30,7 @@
         <div class="content container">
             <div class="pt-3">
                 <h3 class="h2 mb-0 text-capitalize d-flex align-items-center gap-2">
-                    User Rquests
+                    Covid Test Rquests
                 </h3>
             </div>
             <?php
@@ -51,51 +51,50 @@
                         </div>
                         <div class="card-body">
                         <div class="table-responsive">
-    <div style="overflow-x: auto; width: 100%;">
-        <table class="table">
-            <thead class="thead-light thead-50 text-capitalize">
-                <?php
-                $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test' AND isapprove = 'accepted'";
-                $result = mysqli_query($conn, $query);
-                if (mysqli_num_rows($result) != 0) {
-                    echo "
-                    <tr>
-                        <th>Appointment ID#</th>
-                        <th>Patient name</th>
-                        <th>Patient email</th>
-                        <th>Patient age</th>
-                        <th>address</th>
-                        <th>Blood group</th>
-                        <th>Availabity from</th>
-                        <th>Availabity to</th>
-                        <th>Action</th>
-                    </tr>
-                    ";
-                    while ($data = mysqli_fetch_assoc($result)) {
-                        echo "
-                        <tr>
-                            <td class='fw-bold'>" . $data['id'] . "</td>
-                            <td>" . $data['name'] . "</td>
-                            <td>" . $data['email'] . "</td>
-                            <td>" . $data['age'] . "</td>
-                            <td>" . $data['home_address'] . "</td>
-                            <td>" . $data['blood_group'] . "</td>
-                            <td>" . $data['availabity_from'] . "</td>
-                            <td>" . $data['availabity_to'] . "</td>
-                            <td class='d-flex'>
-                                <a href='./usersAction/Approval.php?id=$data[id]' class='btn  mx-1 btn-success'>Accept</a>
-                                <a href='./usersAction/Deny.php?id=$data[id]' class='btn  mx-1 btn-danger'>Deny</a>
-                            </td>
-                        </tr>";
-                    }
-                } else {
-                    echo "<h2 class='text-center'>No Data</h2>";
-                }
-                ?>
-            </thead>
-        </table>
-    </div>
-</div>
+                            <div style="overflow-x: auto; width: 100%;">
+                                <table class="table">
+                                    <thead class="thead-light thead-50 text-capitalize">
+                                        <?php
+                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test' AND isapprove = 'pending'";
+                                        $result = mysqli_query($conn, $query);
+                                        if (mysqli_num_rows($result) != 0) {
+                                            echo "
+                                            <tr>
+                                                <th>Appointment ID#</th>
+                                                <th>Patient name</th>
+                                                <th>Patient email</th>
+                                                <th>Patient age</th>
+                                                <th>address</th>
+                                                <th>Blood group</th>
+                                                <th>Availabity from</th>
+                                                <th>Availabity to</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            ";
+                                            while ($data = mysqli_fetch_assoc($result)) {
+                                                echo "
+                                                <tr>
+                                                    <td class='fw-bold'>" . $data['id'] . "</td>
+                                                    <td>" . $data['name'] . "</td>
+                                                    <td>" . $data['email'] . "</td>
+                                                    <td>" . $data['age'] . "</td>
+                                                    <td>" . $data['home_address'] . "</td>
+                                                    <td>" . $data['blood_group'] . "</td>
+                                                    <td>" . $data['availabity_from'] . "</td>
+                                                    <td>" . $data['availabity_to'] . "</td>
+                                                    <td class='d-flex'>
+                                                        <a href='viewTestReq.php ?id=$data[id]&name=$data[name]&email=$data[email]&age=$data[age]&home_address=$data[home_address]&blood_group=$data[blood_group]&availabity_from=$data[availabity_from]&availabity_to=$data[availabity_to]' class='btn btn-success'>View Request</a>
+                                                    </td>
+                                                </tr>";
+                                            }
+                                        } else {
+                                            echo "<h2 class='text-center'>No Request</h2>";
+                                        }
+                                        ?>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
 
                         </div>
 

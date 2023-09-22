@@ -77,6 +77,8 @@
                   </div>
               ";
             };
+          }else{
+            echo "<h1>No Data</h1>";
           }
 
           ?>
