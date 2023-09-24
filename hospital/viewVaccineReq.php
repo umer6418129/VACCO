@@ -29,6 +29,7 @@
         $blood_group = $_GET['blood_group'] ?? "";
         $availabity_from = $_GET['availabity_from'] ?? "";
         $availabity_to = $_GET['availabity_to'] ?? "";
+        $vaccine = $_GET['vaccine'] ?? "";
     } else {
         header('location:login.php');
     }
@@ -51,15 +52,15 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-body">
-                                                <h5 class="text-dark text-center">Are you sure to Accept it ?, You can't Revert it</h5>
+                                                <form action="" method="POST" class="mx-2">
+                                                    <input type="hidden" name="id" value="<?php echo $Id ?>">
+                                                    <textarea name="message" class="form-control" placeholder="Write Message for Patient" id="" cols="30" rows="10" required></textarea>
+                                                    <div class="modal-footer justify-content-between">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-success" name="markBtn">Accept</button>
+                                                    </div>
+                                                </form>
                                             </div>
-                                            <form action="" method="POST" class="mx-2">
-                                                <input type="hidden" name="id" value="<?php echo $Id ?>">
-                                                <div class="modal-footer justify-content-between">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-success" name="markBtn">Accept</button>
-                                                </div>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -127,7 +128,8 @@
 
                         if (isset($_POST['markBtn'])) {
                             $id = $_POST['id'];
-                            $markQuery = "UPDATE test_request SET isapprove = 'accepted' WHERE id='$id'";
+                            $message = $_POST['message'];
+                            $markQuery = "UPDATE test_request SET isapprove = 'accepted',message='$message' WHERE id='$id'";
                             $markRes = mysqli_query($conn, $markQuery);
                             if ($markRes) {
                                 echo '
@@ -185,7 +187,15 @@
                                 </h4>
                             </div>
                             <div class="d-flex  my-2 mt-3">
-                                <h4 class="fw-bold">Subject:</h4>
+                                <h4 class="fw-bold">Vaccine:</h4>
+                                <h4 class="mx-3">
+                                    <?php
+                                    echo $vaccine;
+                                    ?>
+                                </h4>
+                            </div>
+                            <div class="d-flex  my-2 mt-3">
+                                <h4 class="fw-bold">Email:</h4>
                                 <h4 class="mx-3">
                                     <?php
                                     echo $email;

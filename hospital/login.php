@@ -142,7 +142,7 @@
 
     .tooglePass {
         position: absolute;
-        bottom: 127px;
+        bottom: 145px;
         left: 293px;
         cursor: pointer;
     }

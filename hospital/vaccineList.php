@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Covid-Test Appointment List</title>
+    <title>Vaccine-List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <?php
@@ -65,19 +65,20 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <label for="">Select status <span class="text-danger">*</span></label><br>
+                        <!-- <label for="">Select status <span class="text-danger">*</span></label><br> -->
                         <div class="d-flex justify-content-between">
-                            <form action="" method="POST" class="d-flex">
+                            <!-- <form action="" method="POST" class="d-flex">
                                 <div>
                                     <select class="form-select w-auto" name="status">
-                                        <option value="accepted">Accepted</option>
-                                        <option value="rejected">Rejected</option>
+                                        <option value="Pending">Pending</option>
+                                        <option value="Accepted">Accepted</option>
+                                        <option value="Rejected">Rejected</option>
                                     </select>
                                 </div>
                                 <button class="btn btn-info btn-sm mx-2 text-white" name="searchBtn">Search</button>
-                            </form>
+                            </form> -->
                             <form action="" method="POST">
-                                <button class="btn btn-primary btn-sm mx-2 text-white" name="Reset">Reset Filter</button>
+                                <!-- <button class="btn btn-primary btn-sm mx-2 text-white" name="Reset">Reset Filter</button> -->
                                 <a class="btn btn-success" href="testReq.php">
                                     <span>New Appointment Request</span>
                                     <span class="badge">
@@ -100,15 +101,13 @@
                                     <?php
                                     if (isset($_POST['searchBtn'])) {
                                         $status = $_POST['status'];
-                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test' AND isapprove = '$status'";
+                                        $query = "SELECT * FROM vaccines WHERE hospital_id = '$hospitalId'";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
                                             echo "
                                             <tr>
-                                            <th>Patient name</th>
-                                            <th>Patient email</th>
-                                            <th>Availabity from</th>
-                                            <th>Availabity to</th>
+                                            <th>Vaccine name</th>
+                                            <th>Formula</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                             </tr>
@@ -117,14 +116,8 @@
                                                 echo "
                                                     <tr>
                                                     <td>" . $data['name'] . "</td>
-                                                    <td>" . $data['email'] . "</td>
-                                                    <td>" . $data['availabity_from'] . "</td>
-                                                    <td>" . $data['availabity_to'] . "</td>
-                                                    <td>" . $data['isapprove'] . "</td>
-                                                    <td class='d-flex'>
-                                                        <a href='viewTestPatient.php ?id=$data[id]&name=$data[name]&email=$data[email]&age=$data[age]&home_address=$data[home_address]&blood_group=$data[blood_group]&availabity_from=$data[availabity_from]&availabity_to=$data[availabity_to]' class='btn btn-success'>View</a>
-                                                        <a class='btn btn-sm btn-danger ms-2' href = 'approvedReqDel.php ?id=$data[id]'>Delete</a>
-                                                    </td>
+                                                    <td>" . $data['formula'] . "</td>
+                                                    <td>" . $data['availabity'] . "</td>
                                                     </tr>";
                                             }
                                         } else {
@@ -133,15 +126,13 @@
                                             ";
                                         }
                                     } else if (isset($_POST['Reset'])) {
-                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test'";
+                                        $query = "SELECT * FROM vaccines WHERE hospital_id = '$hospitalId'";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
                                             echo "
                                             <tr>
-                                            <th>Patient name</th>
-                                            <th>Patient email</th>
-                                            <th>Availabity from</th>
-                                            <th>Availabity to</th>
+                                            <th>Vaccine name</th>
+                                            <th>Formula</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                             </tr>
@@ -150,29 +141,21 @@
                                                 echo "
                                                     <tr>
                                                     <td>" . $data['name'] . "</td>
-                                                    <td>" . $data['email'] . "</td>
-                                                    <td>" . $data['availabity_from'] . "</td>
-                                                    <td>" . $data['availabity_to'] . "</td>
-                                                    <td>" . $data['isapprove'] . "</td>
-                                                    <td class='d-flex'>
-                                                        <a href='viewTestPatient.php ?id=$data[id]&name=$data[name]&email=$data[email]&age=$data[age]&home_address=$data[home_address]&blood_group=$data[blood_group]&availabity_from=$data[availabity_from]&availabity_to=$data[availabity_to]' class='btn btn-success'>View</a>
-                                                        <a class='btn btn-sm btn-danger ms-2' href = 'approvedReqDel.php ?id=$data[id]'>Delete</a>
-                                                    </td>
+                                                    <td>" . $data['formula'] . "</td>
+                                                    <td>" . $data['availabity'] . "</td>
                                                     </tr>";
                                             }
                                         } else {
                                             echo "<h2 class='text-center'>No Data</h2>";
                                         }
                                     } else {
-                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test'";
+                                        $query = "SELECT * FROM vaccines WHERE hospital_id = '$hospitalId'";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
                                             echo "
                                             <tr>
-                                            <th>Patient name</th>
-                                            <th>Patient email</th>
-                                            <th>Availabity from</th>
-                                            <th>Availabity to</th>
+                                            <th>Vaccine name</th>
+                                            <th>Formula</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                             </tr>
@@ -181,10 +164,8 @@
                                                 echo "
                                                     <tr>
                                                     <td>" . $data['name'] . "</td>
-                                                    <td>" . $data['email'] . "</td>
-                                                    <td>" . $data['availabity_from'] . "</td>
-                                                    <td>" . $data['availabity_to'] . "</td>
-                                                    <td>" . $data['isapprove'] . "</td>
+                                                    <td>" . $data['formula'] . "</td>
+                                                    <td>" . $data['availabity'] . "</td>
                                                     <td class='d-flex'>
                                                         <a href='viewTestPatient.php ?id=$data[id]&name=$data[name]&email=$data[email]&age=$data[age]&home_address=$data[home_address]&blood_group=$data[blood_group]&availabity_from=$data[availabity_from]&availabity_to=$data[availabity_to]' class='btn btn-sm btn-success'>View</a>
                                                         <a class='btn btn-sm btn-danger ms-2' href = 'approvedReqDel.php ?id=$data[id]'>Delete</a>

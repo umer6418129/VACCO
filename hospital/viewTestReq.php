@@ -51,15 +51,15 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-body">
-                                                <h5 class="text-dark text-center">Are you sure to Accept it ?, You can't Revert it</h5>
+                                                <form action="" method="POST" class="mx-2">
+                                                    <input type="hidden" name="id" value="<?php echo $Id ?>">
+                                                    <textarea name="message" class="form-control" placeholder="Write the Message !" id="" cols="30" rows="10" required></textarea>
+                                                    <div class="modal-footer justify-content-between">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-success" name="markBtn">Accept</button>
+                                                    </div>
+                                                </form>
                                             </div>
-                                            <form action="" method="POST" class="mx-2">
-                                                <input type="hidden" name="id" value="<?php echo $Id ?>">
-                                                <div class="modal-footer justify-content-between">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-success" name="markBtn">Accept</button>
-                                                </div>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                             <div class="modal-body">
                                                 <form action="" method="POST" class="mx-2">
                                                     <input type="hidden" name="id" value="<?php echo $Id ?>">
-                                                    <textarea name="message" class="form-control" placeholder="Write Reason of the Rejection" id="" cols="30" rows="10" required></textarea>
+                                                    <textarea name="message" class="form-control" placeholder="Write the Message !" id="" cols="30" rows="10" required></textarea>
                                                     <div class="d-flex justify-content-between mt-2">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                                         <button type="submit" class="btn btn-danger" name="rejBtn">Reject</button>
@@ -127,7 +127,8 @@
 
                         if (isset($_POST['markBtn'])) {
                             $id = $_POST['id'];
-                            $markQuery = "UPDATE test_request SET isapprove = 'accepted' WHERE id='$id'";
+                            $message = $_POST['message'];
+                            $markQuery = "UPDATE test_request SET isapprove = 'accepted', message = '$message' WHERE id='$id'";
                             $markRes = mysqli_query($conn, $markQuery);
                             if ($markRes) {
                                 echo '

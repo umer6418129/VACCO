@@ -66,16 +66,15 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
-                            <!-- <form action="" method="POST" class="d-flex">
+                            <form action="" method="POST" class="d-flex">
                                 <div>
                                     <select class="form-select w-auto" name="status">
-                                        <option value="Pending">Pending</option>
-                                        <option value="Accepted">Accepted</option>
-                                        <option value="Rejected">Rejected</option>
+                                        <option value="accepted">Accepted</option>
+                                        <option value="rejected">Rejected</option>
                                     </select>
                                 </div>
                                 <button class="btn btn-info btn-sm mx-2 text-white" name="searchBtn">Search</button>
-                            </form> -->
+                            </form>
                             <form action="" method="POST">
                                 <!-- <button class="btn btn-primary btn-sm mx-2 text-white" name="Reset">Reset Filter</button> -->
                                 <a class="btn btn-success" href="vaccineReq.php">
@@ -100,7 +99,7 @@
                                     <?php
                                     if (isset($_POST['searchBtn'])) {
                                         $status = $_POST['status'];
-                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'vaccine' AND isapprove = 'accepted'";
+                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'vaccine' AND isapprove = '$status'";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
                                             echo "
@@ -110,6 +109,7 @@
                                                 <th>Vaccine</th>
                                                 <th>Availabity from</th>
                                                 <th>Availabity to</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
 
                                             </tr>
@@ -122,6 +122,7 @@
                                                         <td>" . $data['vaccine'] . "</td>
                                                         <td>" . $data['availabity_from'] . "</td>
                                                         <td>" . $data['availabity_to'] . "</td>
+                                                        <td>" . $data['isapprove'] . "</td>
                                                         <td class='d-flex'>
                                                             <a href='viewVaccinePatient.php ?id=$data[id]&name=$data[name]&email=$data[email]&age=$data[age]&home_address=$data[home_address]&blood_group=$data[blood_group]&availabity_from=$data[availabity_from]&availabity_to=$data[availabity_to]' class='btn btn-sm btn-sm btn-success'>View</a>
                                                             <a class='btn btn-sm btn-danger ms-2' href = 'approvedReqDel.php ?id=$data[id]'>Delete</a>
@@ -134,7 +135,7 @@
                                             ";
                                         }
                                     } else if (isset($_POST['Reset'])) {
-                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'vaccine' AND isapprove = 'accepted'";
+                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'vaccine'";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
                                             echo "
@@ -144,6 +145,7 @@
                                                 <th>Vaccine</th>
                                                 <th>Availabity from</th>
                                                 <th>Availabity to</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
 
                                             </tr>
@@ -156,6 +158,7 @@
                                                        <td>" . $data['vaccine'] . "</td>
                                                         <td>" . $data['availabity_from'] . "</td>
                                                         <td>" . $data['availabity_to'] . "</td>
+                                                        <td>" . $data['isapprove'] . "</td>
                                                         <td class='d-flex'>
                                                             <a href='viewVaccinePatient.php ?id=$data[id]&name=$data[name]&email=$data[email]&age=$data[age]&home_address=$data[home_address]&blood_group=$data[blood_group]&availabity_from=$data[availabity_from]&availabity_to=$data[availabity_to]' class='btn btn-sm btn-success'>View</a>
                                                             <a class='btn btn-sm btn-danger ms-2' href = 'approvedReqDel.php ?id=$data[id]'>Delete</a>
@@ -166,7 +169,7 @@
                                             echo "<h2 class='text-center'>No Data</h2>";
                                         }
                                     } else {
-                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'vaccine' AND isapprove = 'accepted'";
+                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'vaccine'";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
                                             echo "
@@ -176,6 +179,7 @@
                                                 <th>Vaccine</th>
                                                 <th>Availabity from</th>
                                                 <th>Availabity to</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
 
                                             </tr>
@@ -188,6 +192,7 @@
                                                        <td>" . $data['vaccine'] . "</td>
                                                         <td>" . $data['availabity_from'] . "</td>
                                                         <td>" . $data['availabity_to'] . "</td>
+                                                        <td>" . $data['isapprove'] . "</td>
                                                         <td class='d-flex'>
                                                             <a href='viewVaccinePatient.php ?id=$data[id]&name=$data[name]&email=$data[email]&age=$data[age]&home_address=$data[home_address]&blood_group=$data[blood_group]&availabity_from=$data[availabity_from]&availabity_to=$data[availabity_to]' class='btn btn-sm btn-success'>View</a>
                                                             <a class='btn btn-sm btn-danger ms-2' href = 'approvedReqDel.php ?id=$data[id]'>Delete</a>

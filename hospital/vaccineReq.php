@@ -75,7 +75,7 @@
                                                     <td>" . $data['availabity_from'] . "</td>
                                                     <td>" . $data['availabity_to'] . "</td>
                                                     <td class='d-flex'>
-                                                        <a href='viewVaccineReq.php ?id=$data[id]&name=$data[name]&email=$data[email]&age=$data[age]&home_address=$data[home_address]&blood_group=$data[blood_group]&availabity_from=$data[availabity_from]&availabity_to=$data[availabity_to]' class='btn btn-success'>View Request</a>
+                                                        <a href='viewVaccineReq.php ?id=$data[id]&name=$data[name]&email=$data[email]&age=$data[age]&home_address=$data[home_address]&blood_group=$data[blood_group]&availabity_from=$data[availabity_from]&availabity_to=$data[availabity_to]&vaccine=$data[vaccine]' class='btn btn-success'>View Request</a>
                                                     </td>
                                                 </tr>";
                                             }

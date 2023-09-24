@@ -71,29 +71,31 @@
                         <div class="tab-content">
                             <!-- username -->
                             <div class="tab-pane active" id="username" role="tabpanel" aria-labelledby="username-tab" tabindex="0">
-                                <!-- <div class="alert alert-primary " role="alert">
-                                    A simple primary alert—check it out!
-                                </div> -->
                                 <div class="mt-5">
                                     <?php
                                     $testQuery = "SELECT test_request.*, hospital.name AS hospital_name 
                                    FROM `test_request` 
                                    INNER JOIN hospital ON test_request.hospital_id = hospital.id 
-                                   WHERE user_id = '$userId' AND type= 'test' ORDER BY id DESC" ;
+                                   WHERE user_id = '$userId' AND type= 'test' ORDER BY id DESC";
                                     $res = mysqli_query($conn, $testQuery);
                                     if (mysqli_num_rows($res) != 0) {
                                         while ($data = mysqli_fetch_assoc($res)) {
                                             $statusClass = ($data['isapprove'] === 'pending') ? 'text-info' : 'text-success';
                                             echo '
-                                            <div class="alert alert-primary" role="alert">
+                                            <div class="alert alert-primary
+                                            " role="alert">
                                                 <span class="fw-bold"> Id#' . $data['id'] . '</span><br>
                                                 <span class="fw-bold text-center"> Hospital:' . " " . $data['hospital_name'] . '</span>
                                                 <div>Your Apointment is <span class="fw-bold">' . $data['isapprove'] . '</span> from <span class="fw-bold">' . $data['availabity_from'] . '</span> to <span class="fw-bold">' . $data['availabity_to'] . '</span></div> 
+                                                <div>
+                                                <span class="fw-bold">Message:</span>
+                                                <span>' . $data['message'] . ' </span>
+                                                </div>
                                             </div>
                                             ';
                                         }
-                                    }else{
-                                        echo'
+                                    } else {
+                                        echo '
                                         <h4 class="text-center">No Test Appointment</h4>
                                         ';
                                     }
@@ -117,12 +119,16 @@
                                                 <span class="fw-bold"> Id#' . $data['id'] . '</span><br>
                                                 <span class="fw-bold text-center"> Hospital:' . " " . $data['hospital_name'] . '</span><br>
                                                 <span class="fw-bold text-center"> Vaccine:' . " " . $data['vaccine'] . '</span>
-                                                <div>Your Apointment is <span class="fw-bold">' . $data['isapprove'] . '</span> from <span class="fw-bold">' . $data['availabity_from'] . '</span> to <span class="fw-bold">' . $data['availabity_to'] . '</span></div> 
+                                                <div>Your Apointment is <span class="fw-bold">' . $data['isapprove'] . '</span> from <span class="fw-bold">' . $data['availabity_from'] . '</span> to <span class="fw-bold">' . $data['availabity_to'] . '</span></div>
+                                                <div>
+                                                <span class="fw-bold">Message:</span>
+                                                <span>' . $data['message'] . ' </span>
+                                                </div> 
                                             </div>
                                             ';
                                         }
-                                    }else{
-                                        echo'
+                                    } else {
+                                        echo '
                                         <h4 class="text-center">No Vaccination Appointment</h4>
                                         ';
                                     }
