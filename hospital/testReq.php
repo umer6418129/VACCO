@@ -60,12 +60,8 @@
                                         if (mysqli_num_rows($result) != 0) {
                                             echo "
                                             <tr>
-                                                <th>Appointment ID#</th>
                                                 <th>Patient name</th>
                                                 <th>Patient email</th>
-                                                <th>Patient age</th>
-                                                <th>address</th>
-                                                <th>Blood group</th>
                                                 <th>Availabity from</th>
                                                 <th>Availabity to</th>
                                                 <th>Action</th>
@@ -74,12 +70,8 @@
                                             while ($data = mysqli_fetch_assoc($result)) {
                                                 echo "
                                                 <tr>
-                                                    <td class='fw-bold'>" . $data['id'] . "</td>
                                                     <td>" . $data['name'] . "</td>
                                                     <td>" . $data['email'] . "</td>
-                                                    <td>" . $data['age'] . "</td>
-                                                    <td>" . $data['home_address'] . "</td>
-                                                    <td>" . $data['blood_group'] . "</td>
                                                     <td>" . $data['availabity_from'] . "</td>
                                                     <td>" . $data['availabity_to'] . "</td>
                                                     <td class='d-flex'>

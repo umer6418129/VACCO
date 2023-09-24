@@ -36,7 +36,7 @@
     <div class="content container">
         <div class="pt-3">
             <h3 class="h2 mb-0 text-capitalize d-flex align-items-center gap-2">
-                View Test
+                View Patient Details
             </h3>
         </div>
         <div class="row mt-5">
@@ -44,7 +44,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
-                            <a class="btn btn-secondary" href="testReq.php"><i class="bi bi-arrow-left"></i>Back</a>
+                            <a class="btn btn-secondary" href="vaccineReq.php"><i class="bi bi-arrow-left"></i>Back</a>
                             <div class="d-flex">
                                 <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#accModal">Accept</button>
                                 <div class="modal fade" id="accModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -87,7 +87,7 @@
                         if (isset($_POST['rejBtn'])) {
                             $id = $_POST['id'];
                             $message = $_POST['message'];
-                            $markQuery = "UPDATE test_request SET isapprove = 'rejected', message = '$message' WHERE id='$id'";
+                            $markQuery = "UPDATE test_request SET isapprove = 'rejected',message='$message' WHERE id='$id'";
                             $markRes = mysqli_query($conn, $markQuery);
                             if ($markRes) {
                                 echo '
