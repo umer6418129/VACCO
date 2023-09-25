@@ -65,29 +65,21 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <!-- <label for="">Select status <span class="text-danger">*</span></label><br> -->
+                        <label for="">Select status <span class="text-danger">*</span></label><br>
                         <div class="d-flex justify-content-between">
-                            <!-- <form action="" method="POST" class="d-flex">
+                            <form action="" method="POST" class="d-flex">
                                 <div>
                                     <select class="form-select w-auto" name="status">
-                                        <option value="Pending">Pending</option>
-                                        <option value="Accepted">Accepted</option>
-                                        <option value="Rejected">Rejected</option>
+                                        <option value="Available">Available</option>
+                                        <option value="Unavailable">Unavailable</option>
                                     </select>
                                 </div>
                                 <button class="btn btn-info btn-sm mx-2 text-white" name="searchBtn">Search</button>
-                            </form> -->
+                            </form>
                             <form action="" method="POST">
-                                <!-- <button class="btn btn-primary btn-sm mx-2 text-white" name="Reset">Reset Filter</button> -->
-                                <a class="btn btn-success" href="testReq.php">
-                                    <span>New Appointment Request</span>
-                                    <span class="badge">
-                                        <?php
-                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test' AND isapprove = 'pending'";
-                                        $result = mysqli_query($conn, $query);
-                                        echo mysqli_num_rows($result);
-                                        ?>
-                                    </span>
+                                <button class="btn btn-primary btn-sm mx-2 text-white" name="Reset">Reset Filter</button>
+                                <a class="btn btn-success" href="addNewVaccine.php">
+                                    <span>Add new vaccine</span>
                                 </a>
                             </form>
 
@@ -101,7 +93,7 @@
                                     <?php
                                     if (isset($_POST['searchBtn'])) {
                                         $status = $_POST['status'];
-                                        $query = "SELECT * FROM vaccines WHERE hospital_id = '$hospitalId'";
+                                        $query = "SELECT * FROM vaccines WHERE hospital_id = '$hospitalId' AND availability = '$status'";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
                                             echo "
@@ -117,7 +109,11 @@
                                                     <tr>
                                                     <td>" . $data['name'] . "</td>
                                                     <td>" . $data['formula'] . "</td>
-                                                    <td>" . $data['availabity'] . "</td>
+                                                    <td>" . $data['availability'] . "</td>
+                                                    <td>
+                                                    <a class='btn btn-sm btn-danger ms-2' href = 'vaccineDel.php ?id=$data[id]'>Delete</a>
+                                                    <a class='btn btn-sm btn-success ms-2' href = 'vaccineUpdateStatus.php ?id=$data[id]&name=$data[name]&formula=$data[formula]&availability=$data[availability]'>Update Status</a>
+                                                    </td>
                                                     </tr>";
                                             }
                                         } else {
@@ -142,7 +138,11 @@
                                                     <tr>
                                                     <td>" . $data['name'] . "</td>
                                                     <td>" . $data['formula'] . "</td>
-                                                    <td>" . $data['availabity'] . "</td>
+                                                    <td>" . $data['availability'] . "</td>
+                                                    <td>
+                                                    <a class='btn btn-sm btn-danger ms-2' href = 'vaccineDel.php ?id=$data[id]'>Delete</a>
+                                                    <a class='btn btn-sm btn-success ms-2' href = 'vaccineUpdateStatus.php ?id=$data[id]&name=$data[name]&formula=$data[formula]&availability=$data[availability]'>Update Status</a>
+                                                    </td>
                                                     </tr>";
                                             }
                                         } else {
@@ -165,10 +165,10 @@
                                                     <tr>
                                                     <td>" . $data['name'] . "</td>
                                                     <td>" . $data['formula'] . "</td>
-                                                    <td>" . $data['availabity'] . "</td>
-                                                    <td class='d-flex'>
-                                                        <a href='viewTestPatient.php ?id=$data[id]&name=$data[name]&email=$data[email]&age=$data[age]&home_address=$data[home_address]&blood_group=$data[blood_group]&availabity_from=$data[availabity_from]&availabity_to=$data[availabity_to]' class='btn btn-sm btn-success'>View</a>
-                                                        <a class='btn btn-sm btn-danger ms-2' href = 'approvedReqDel.php ?id=$data[id]'>Delete</a>
+                                                    <td>" . $data['availability'] . "</td>
+                                                    <td>
+                                                    <a class='btn btn-sm btn-success ms-2' href = 'vaccineUpdateStatus.php ?id=$data[id]&name=$data[name]&formula=$data[formula]&availability=$data[availability]'>Update Status</a>
+                                                    <a class='btn btn-sm btn-danger ms-2' href = 'vaccineDel.php ?id=$data[id]'>Delete</a>
                                                     </td>
                                                     </tr>";
                                             }

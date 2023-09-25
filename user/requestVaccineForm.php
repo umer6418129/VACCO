@@ -36,7 +36,7 @@
     if (isset($_SESSION['f_name'])) {
         $Id = $_GET['id'] ?? "";
 
-        $getVaccine = "SELECT * FROM `vaccines` WHERE hospital_id = '$Id'";
+        $getVaccine = "SELECT * FROM `vaccines` WHERE hospital_id = '$Id' AND availability = 'Available'";
         $responseVaccine = mysqli_query($conn, $getVaccine) or die('no vaccine');
         // $vaccineName = mysqli_fetch_assoc($responseVaccine);
     } else {

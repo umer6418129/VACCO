@@ -28,7 +28,7 @@
     <a href="dashboard.php" id="dashboard" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-dashboard"></i></a>
     <a href="testAppointmentList.php" id="list" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-thermometer-0"></i></a>
     <a href="vaccineAppointmentList.php" id="vaccine" class="w3-bar-item w3-button sidebar-item"><i class='fa fa-eyedropper'></i></a>
-    <!-- <a href="vaccineReq.php" id="result" class="w3-bar-item w3-button sidebar-item"><i class='bi bi-card-checklist'></i></a> -->
+    <a href="vaccineList.php" id="vacList" class="w3-bar-item w3-button sidebar-item"><i class='bi bi-card-checklist'></i></a>
     <!-- <a href="patient.php" id="patient" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-user"></i></a>
     <a href="vaccineList.php" id="vaccine" class="w3-bar-item w3-button sidebar-item"><i class="bi bi-virus"></i></a>
     <a href="messages.php" id="message" class="w3-bar-item w3-button sidebar-item"><i class="bi bi-chat-dots-fill"></i></a> -->
