@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2023 at 07:54 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Sep 25, 2023 at 05:56 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,7 @@ CREATE TABLE `contactuser` (
   `query` varchar(500) DEFAULT NULL,
   `userid` bigint(20) DEFAULT NULL,
   `mark` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `contactuser`
@@ -61,7 +61,7 @@ CREATE TABLE `hospital` (
   `isapprove` varchar(50) DEFAULT NULL,
   `isactive` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `hospital`
@@ -69,7 +69,7 @@ CREATE TABLE `hospital` (
 
 INSERT INTO `hospital` (`id`, `name`, `address`, `country`, `email`, `password`, `isapprove`, `isactive`, `create_at`) VALUES
 (1, 'Eureka', '12/abc avenue', 'USA', 'admin@eureka.com', 'admin!eureka.12', 'Accepted', 0, '2023-09-06 01:00:46'),
-(2, 'aki', 'abs roard', 'Ind', 'aki@gmail.com', 'aki@gmail.com', 'Accepted', 0, '0000-00-00 00:00:00'),
+(2, 'aki8', 'abs roard', 'Ind', 'aki@gmail.com', 'aki@gmail.com123A', 'Accepted', 0, '0000-00-00 00:00:00'),
 (3, 'ASa', 'abcd', 'Anguilla', 'user22@gmail.com', 'user22@gmail.com', 'Rejected', 0, '0000-00-00 00:00:00'),
 (4, 'qatar', 'Orangi town ', 'Albania', 'r0dney.m+003@yandex.com', 'r0dney.m+003@yandex.com', 'Rejected', 0, '0000-00-00 00:00:00'),
 (6, 'santum', 'Orangi town ', 'Australia', 'marcrodney2207@gmail.com', 'marcrodney2207@gmail.com', 'Rejected', 0, '0000-00-00 00:00:00');
@@ -85,7 +85,7 @@ CREATE TABLE `super_admin` (
   `username` varchar(200) DEFAULT NULL,
   `password_hash` varchar(200) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `super_admin`
@@ -115,20 +115,22 @@ CREATE TABLE `test_request` (
   `type` varchar(20) NOT NULL,
   `hospital_id` bigint(20) DEFAULT NULL,
   `user_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `test_request`
 --
 
 INSERT INTO `test_request` (`id`, `name`, `email`, `age`, `home_address`, `blood_group`, `vaccine`, `availabity_from`, `availabity_to`, `isapprove`, `message`, `type`, `hospital_id`, `user_id`) VALUES
-(1, 'umer', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O', '', '2023-09-14', '2023-09-28', 'accepted', '', 'test', 1, 1),
-(2, 'umer', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O', '', '2023-09-14', '2023-09-28', 'accepted', '', 'test', 1, 1),
-(11, 'umer', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O', '', '2023-09-30', '2023-10-06', 'accepted', '', 'test', 1, 1),
-(12, 'umer', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O', '', '2023-09-30', '2023-10-06', 'rejected', '', 'test', 1, 1),
-(13, 'ASa', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O', '', '2023-09-22', '2023-09-19', 'pending', '', 'test', 1, 1),
-(14, 'umer', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O', '1', '2023-09-28', '2023-09-30', 'pending', '', 'vaccine', 1, 1),
-(15, 'umer', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O', 'p-Fizer', '2023-09-28', '2023-09-30', 'pending', '', 'vaccine', 1, 1);
+(17, 'ASa', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O Negative', 'p-fizer', '2023-09-27', '2023-10-06', 'accepted', '', 'vaccine', 2, 2),
+(24, 'umer', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O Negative', '', '2023-09-25', '2023-09-27', 'accepted', '', 'test', 2, 2),
+(25, 'umer', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O Negative', '', '2023-09-25', '2023-09-27', 'pending', '', 'test', 2, 2),
+(26, 'ASa', 'r0dney.m+003@yandex.com', '23 years', 'Orangi town ', 'O Negative', 'p-fizer', '2023-09-26', '2023-09-26', 'accepted', '', 'vaccine', 2, 2),
+(27, 'ASa', 'r0dney.m+003@yandex.com', '23 years', 'Orangi town ', 'O Negative', 'p-fizer', '2023-09-26', '2023-09-26', 'rejected', '', 'vaccine', 2, 2),
+(28, 'ASa', 'r0dney.m+003@yandex.com', '23 years', 'Orangi town ', 'O Negative', 'p-fizer', '2023-09-26', '2023-09-26', 'rejected', 'this is fake', 'vaccine', 2, 2),
+(29, 'ASa', 'r0dney.m+003@yandex.com', '23 years', 'Orangi town ', 'O Negative', 'p-fizer', '2023-09-26', '2023-09-26', 'pending', '', 'vaccine', 2, 2),
+(30, 'ASa', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O', 'p-Fizer', '2023-09-26', '2023-09-28', 'accepted', 'congrats your appointment has been submited', 'vaccine', 1, 1),
+(31, 'umer', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O Negative', '', '2023-09-26', '2023-09-12', 'accepted', 'your request has been accepted', 'test', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -146,7 +148,7 @@ CREATE TABLE `users` (
   `isapprove` varchar(30) DEFAULT NULL,
   `isactive` int(11) DEFAULT NULL,
   `create_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -169,14 +171,15 @@ CREATE TABLE `vaccines` (
   `formula` varchar(100) DEFAULT NULL,
   `availability` varchar(50) DEFAULT NULL,
   `hospital_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `vaccines`
 --
 
 INSERT INTO `vaccines` (`id`, `name`, `formula`, `availability`, `hospital_id`) VALUES
-(1, 'p-Fizer', 'ABC', 'Available', 1);
+(1, 'p-Fizer', 'ABC', 'Available', 1),
+(2, 'p-fizer', 'ABC', 'Available', 2);
 
 --
 -- Indexes for dumped tables
@@ -249,7 +252,7 @@ ALTER TABLE `super_admin`
 -- AUTO_INCREMENT for table `test_request`
 --
 ALTER TABLE `test_request`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -261,7 +264,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vaccines`
 --
 ALTER TABLE `vaccines`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
