@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2023 at 05:56 AM
+-- Generation Time: Sep 26, 2023 at 10:50 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -129,8 +129,22 @@ INSERT INTO `test_request` (`id`, `name`, `email`, `age`, `home_address`, `blood
 (27, 'ASa', 'r0dney.m+003@yandex.com', '23 years', 'Orangi town ', 'O Negative', 'p-fizer', '2023-09-26', '2023-09-26', 'rejected', '', 'vaccine', 2, 2),
 (28, 'ASa', 'r0dney.m+003@yandex.com', '23 years', 'Orangi town ', 'O Negative', 'p-fizer', '2023-09-26', '2023-09-26', 'rejected', 'this is fake', 'vaccine', 2, 2),
 (29, 'ASa', 'r0dney.m+003@yandex.com', '23 years', 'Orangi town ', 'O Negative', 'p-fizer', '2023-09-26', '2023-09-26', 'pending', '', 'vaccine', 2, 2),
-(30, 'ASa', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O', 'p-Fizer', '2023-09-26', '2023-09-28', 'accepted', 'congrats your appointment has been submited', 'vaccine', 1, 1),
 (31, 'umer', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O Negative', '', '2023-09-26', '2023-09-12', 'accepted', 'your request has been accepted', 'test', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_result`
+--
+
+CREATE TABLE `test_result` (
+  `id` bigint(20) NOT NULL,
+  `type` varchar(20) DEFAULT NULL,
+  `vaccine` varchar(50) DEFAULT NULL,
+  `test_date` date DEFAULT NULL,
+  `result` varchar(60) DEFAULT NULL,
+  `appointment_id` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -179,7 +193,8 @@ CREATE TABLE `vaccines` (
 
 INSERT INTO `vaccines` (`id`, `name`, `formula`, `availability`, `hospital_id`) VALUES
 (1, 'p-Fizer', 'ABC', 'Available', 1),
-(2, 'p-fizer', 'ABC', 'Available', 2);
+(2, 'p-fizer', 'ABC', 'Available', 2),
+(3, 'V-fizer', 'XYZ', 'Available', 1);
 
 --
 -- Indexes for dumped tables
@@ -212,6 +227,13 @@ ALTER TABLE `test_request`
   ADD PRIMARY KEY (`id`),
   ADD KEY `hospital_id` (`hospital_id`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `test_result`
+--
+ALTER TABLE `test_result`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `appointment_id` (`appointment_id`);
 
 --
 -- Indexes for table `users`
@@ -252,7 +274,7 @@ ALTER TABLE `super_admin`
 -- AUTO_INCREMENT for table `test_request`
 --
 ALTER TABLE `test_request`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -264,7 +286,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vaccines`
 --
 ALTER TABLE `vaccines`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -282,6 +304,12 @@ ALTER TABLE `contactuser`
 ALTER TABLE `test_request`
   ADD CONSTRAINT `test_request_ibfk_1` FOREIGN KEY (`hospital_id`) REFERENCES `hospital` (`id`),
   ADD CONSTRAINT `test_request_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `test_result`
+--
+ALTER TABLE `test_result`
+  ADD CONSTRAINT `test_result_ibfk_1` FOREIGN KEY (`appointment_id`) REFERENCES `test_request` (`id`);
 
 --
 -- Constraints for table `vaccines`
