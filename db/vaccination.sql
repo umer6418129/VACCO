@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2023 at 10:50 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Sep 27, 2023 at 07:44 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,7 @@ CREATE TABLE `contactuser` (
   `query` varchar(500) DEFAULT NULL,
   `userid` bigint(20) DEFAULT NULL,
   `mark` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `contactuser`
@@ -61,7 +61,7 @@ CREATE TABLE `hospital` (
   `isapprove` varchar(50) DEFAULT NULL,
   `isactive` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hospital`
@@ -85,7 +85,7 @@ CREATE TABLE `super_admin` (
   `username` varchar(200) DEFAULT NULL,
   `password_hash` varchar(200) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `super_admin`
@@ -115,7 +115,7 @@ CREATE TABLE `test_request` (
   `type` varchar(20) NOT NULL,
   `hospital_id` bigint(20) DEFAULT NULL,
   `user_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `test_request`
@@ -129,7 +129,9 @@ INSERT INTO `test_request` (`id`, `name`, `email`, `age`, `home_address`, `blood
 (27, 'ASa', 'r0dney.m+003@yandex.com', '23 years', 'Orangi town ', 'O Negative', 'p-fizer', '2023-09-26', '2023-09-26', 'rejected', '', 'vaccine', 2, 2),
 (28, 'ASa', 'r0dney.m+003@yandex.com', '23 years', 'Orangi town ', 'O Negative', 'p-fizer', '2023-09-26', '2023-09-26', 'rejected', 'this is fake', 'vaccine', 2, 2),
 (29, 'ASa', 'r0dney.m+003@yandex.com', '23 years', 'Orangi town ', 'O Negative', 'p-fizer', '2023-09-26', '2023-09-26', 'pending', '', 'vaccine', 2, 2),
-(31, 'umer', 'marcrodney2207@gmail.com', '23 years', 'Orangi town ', 'O Negative', '', '2023-09-26', '2023-09-12', 'accepted', 'your request has been accepted', 'test', 1, 1);
+(38, 'Umer', 'admin.aptechorangi@gmail.com', '78', 'user@gmail.com', 'B positive', '', '2023-09-28', '2023-09-26', 'accepted', 'fsdfsdf', 'test', 1, 1),
+(39, 'Umer', 'admin@aptechorangi.com', '78', 'user@gmail.com', 'B positive', 'V-fizer', '2023-09-28', '2023-09-25', 'accepted', 'dsfsfs', 'vaccine', 1, 1),
+(40, 'Umer', 'admin@aptechorangi.com', '78', 'user@gmail.com', 'B positive', 'V-fizer', '2023-09-28', '2023-09-25', 'accepted', 'Testing', 'vaccine', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,14 @@ CREATE TABLE `test_result` (
   `test_date` date DEFAULT NULL,
   `result` varchar(60) DEFAULT NULL,
   `appointment_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `test_result`
+--
+
+INSERT INTO `test_result` (`id`, `type`, `vaccine`, `test_date`, `result`, `appointment_id`) VALUES
+(0, 'test', NULL, '2023-09-26', ' positive', 38);
 
 -- --------------------------------------------------------
 
@@ -162,7 +171,7 @@ CREATE TABLE `users` (
   `isapprove` varchar(30) DEFAULT NULL,
   `isactive` int(11) DEFAULT NULL,
   `create_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
@@ -185,14 +194,14 @@ CREATE TABLE `vaccines` (
   `formula` varchar(100) DEFAULT NULL,
   `availability` varchar(50) DEFAULT NULL,
   `hospital_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `vaccines`
 --
 
 INSERT INTO `vaccines` (`id`, `name`, `formula`, `availability`, `hospital_id`) VALUES
-(1, 'p-Fizer', 'ABC', 'Available', 1),
+(1, 'p-Fizer', 'ABC', 'Unavailable', 1),
 (2, 'p-fizer', 'ABC', 'Available', 2),
 (3, 'V-fizer', 'XYZ', 'Available', 1);
 
@@ -274,7 +283,7 @@ ALTER TABLE `super_admin`
 -- AUTO_INCREMENT for table `test_request`
 --
 ALTER TABLE `test_request`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `users`

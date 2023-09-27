@@ -75,9 +75,10 @@
                                     </select>
                                 </div>
                                 <button class="btn btn-info btn-sm mx-2 text-white" name="searchBtn">Search</button>
+                                <button class="btn btn-primary btn-sm mx-2 text-white" name="Reset">Reset Filter</button>
                             </form>
                             <form action="" method="POST">
-                                <button class="btn btn-primary btn-sm mx-2 text-white" name="Reset">Reset Filter</button>
+                            <a class="btn btn-primary" href="testResult.php">Results</a>
                                 <a class="btn btn-success" href="testReq.php">
                                     <span>New Appointment Request</span>
                                     <span class="badge">
@@ -133,7 +134,7 @@
                                             ";
                                         }
                                     } else if (isset($_POST['Reset'])) {
-                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test'";
+                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test' AND isapprove != 'pending'";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
                                             echo "
@@ -164,7 +165,7 @@
                                             echo "<h2 class='text-center'>No Data</h2>";
                                         }
                                     } else {
-                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test'";
+                                        $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test' AND isapprove != 'pending'";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
                                             echo "

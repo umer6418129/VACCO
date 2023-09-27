@@ -54,12 +54,12 @@
                     <div class="card-body">
                         <div class="container">
                             <div class="row justify-content-between">
-                                <div class="card bg-success shadow mb-3 col-4 border-0" style="max-width: 18rem;">
+                                <div class="card bg-primary shadow mb-3 col-4 border-0" style="max-width: 18rem;">
                                     <div class="card-body">
-                                        <h4 class="text-white">Current Hospitals:
+                                        <h4 class="text-white">test requests:
                                             <span>
                                                 <?php
-                                                $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId'";
+                                                $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test' AND isapprove = 'pending'";
                                                 $res = mysqli_query($conn, $query);
                                                 echo mysqli_num_rows($res);
                                                 ?>
@@ -67,6 +67,65 @@
                                         </h4>
                                     </div>
                                 </div>
+                                <div class="card bg-success shadow mb-3 col-4 border-0" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        <h4 class="text-white">test Appointments:
+                                            <span>
+                                                <?php
+                                                $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'test' AND isapprove = 'accepted'";
+                                                $res = mysqli_query($conn, $query);
+                                                echo mysqli_num_rows($res);
+                                                ?>
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="card bg-primary shadow mb-3 col-4 border-0" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        <h4 class="text-white">vaccine requests:
+                                            <span>
+                                                <?php
+                                                $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'vaccine' AND isapprove = 'pending'";
+                                                $res = mysqli_query($conn, $query);
+                                                echo mysqli_num_rows($res);
+                                                ?>
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="card bg-success shadow mb-3 col-4 border-0" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        <h4 class="text-white">vaccine Appointments:
+                                            <span>
+                                                <?php
+                                                $query = "SELECT * FROM test_request WHERE hospital_id = '$hospitalId' AND type = 'vaccine' AND isapprove = 'accepted'";
+                                                $res = mysqli_query($conn, $query);
+                                                echo mysqli_num_rows($res);
+                                                ?>
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="card bg-primary shadow mb-3 col-4 border-0" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        <h4 class="text-white">number of vaccine:
+                                            <span>
+                                                <?php
+                                                $query = "SELECT * FROM vaccines WHERE hospital_id = '$hospitalId'";
+                                                $res = mysqli_query($conn, $query);
+                                                echo mysqli_num_rows($res);
+                                                ?>
+                                            </span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class=" col-4 border-0" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="row justify-content-between">
                             </div>  
                         </div>
 

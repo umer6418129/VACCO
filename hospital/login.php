@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hospital-Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <?php
@@ -153,7 +153,7 @@
         <div class="form">
             <h1>Hospital Site</h1>
             <form action="login.php" method="POST" class="login-form">
-                <input type="text" name="name" placeholder="name" />
+                <input type="text" name="name" placeholder="Username" />
                 <input type="password" name="password" id="password" placeholder="password" />
                 <i class="bi bi-eye-fill tooglePass" id="showPassword"></i>
                 <i class="bi bi-eye-slash-fill tooglePass" id="hidePassword"></i>

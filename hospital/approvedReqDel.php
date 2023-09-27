@@ -1,16 +1,21 @@
 <?php
 include('connection.php');
 $id = $_GET['id'];
-$delQuery = "delete from test_request where id = '$id'";
+$delQuery = "DELETE FROM test_request WHERE id = '$id'";
 $result = mysqli_query($conn, $delQuery);
-if ($result) {
-    echo "  <script>
-                    alert('Data has been Deleted');
-                    history.back();
-                </script>";
+
+$delChilds = "DELETE FROM test_result WHERE appointment_id = '$id'";
+$childResult = mysqli_query($conn, $delChilds) or die("Something went wrong");
+
+if ($result && $childResult) {
+    echo "<script>
+        alert('Data has been Deleted');
+        history.back();
+    </script>";
 } else {
-    echo "  <script>
-                    alert('Something went's wrong');
-                    history.back();
-                </script>";
+    echo "<script>
+        alert('Something went wrong');
+        history.back();
+    </script>";
 }
+?>

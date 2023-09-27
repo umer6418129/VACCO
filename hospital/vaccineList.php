@@ -50,7 +50,7 @@
     <div class="content container">
         <div class="pt-3">
             <h3 class="h2 mb-0 text-capitalize d-flex align-items-center gap-2">
-                Test Approved Patient
+                Vaccines List
             </h3>
         </div>
         <?php
@@ -75,9 +75,9 @@
                                     </select>
                                 </div>
                                 <button class="btn btn-info btn-sm mx-2 text-white" name="searchBtn">Search</button>
+                                <button class="btn btn-primary btn-sm mx-2 text-white" name="Reset">Reset Filter</button>
                             </form>
                             <form action="" method="POST">
-                                <button class="btn btn-primary btn-sm mx-2 text-white" name="Reset">Reset Filter</button>
                                 <a class="btn btn-success" href="addNewVaccine.php">
                                     <span>Add new vaccine</span>
                                 </a>

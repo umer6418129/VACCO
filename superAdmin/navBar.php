@@ -28,7 +28,7 @@
     <a href="dashboard.php" id="dashboard" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-dashboard"></i></a>
     <a href="hospitalList.php" id="envelope" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-hospital-o"></i></a>
     <a href="patient.php" id="patient" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-user"></i></a>
-    <a href="vaccineList.php" id="vaccine" class="w3-bar-item w3-button sidebar-item"><i class="bi bi-virus"></i></a>
+    <a href="vaccineList.php" id="vaccine" class="w3-bar-item w3-button sidebar-item"><i class="fa fa-eyedropper"></i></a>
     <a href="messages.php" id="message" class="w3-bar-item w3-button sidebar-item"><i class="bi bi-chat-dots-fill"></i></a>
     <a href="manage.php" id="user" class="w3-bar-item w3-button sidebar-item"><i class='fa fa-user-circle'></i></a>
   </div>

@@ -170,14 +170,6 @@
                     <div class="card-body">
                         <div class="">
                             <div class="d-flex  my-2 mt-3">
-                                <h4 class="fw-bold">Appointment Id#</h4>
-                                <h4 class="mx-3 fw-bold">
-                                    <?php
-                                    echo $Id;
-                                    ?>
-                                </h4>
-                            </div>
-                            <div class="d-flex  my-2 mt-3">
                                 <h4 class="fw-bold">Name:</h4>
                                 <h4 class="mx-3">
                                     <?php
