@@ -168,18 +168,32 @@
     if (isset($_POST['btn'])) {
         $username = $_POST['username'];
         $password_hash = $_POST['password_hash'];
-
+    
         $query = "SELECT * FROM users where email_phone='$username' and password='$password_hash' and isapprove = 'Accepted' ";
         $res = mysqli_query($conn, $query);
         $total = mysqli_num_rows($res);
         if ($total == 1) {
             $_SESSION['f_name'] = $username;
-            echo '<script type="text/javascript">window.location.href = "index.php";</script>';
-            echo '<script type="text/javascript">toastr.success("Login Successfully")</script>';
+    
+            // Create an associative array with user information
+            $user_info = array(
+                'username' => $username,
+                'isLoggedIn' => true
+            );
+    
+            // Serialize the user information array and set it as a cookie
+            $user_info_serialized = serialize($user_info);
+            setcookie('user_info', $user_info_serialized, time() + 3600, '/'); // Cookie expires in 1 hour
+    
+            echo '<script type="text/javascript">
+                      window.location.href = "index.php";
+                      toastr.success("Login Successfully");
+                  </script>';
         } else {
             echo '<script type="text/javascript">toastr.error("Incorrect email/phone or password")</script>';
         }
     }
+    
     ?>
 
 

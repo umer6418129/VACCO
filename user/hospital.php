@@ -68,8 +68,14 @@
                   <div class="col-sm-6 mt-5 hospital-card">
                       <div class="card">
                           <div class="card-body">
-                              <h5 class="card-title">'  . $data['name'] . "</h5>
-                              <p class='card-text'>" . $data['address']. " " . $data['country'] . "</p>
+                              <h5 class="card-title">
+                              <span>Hospital Name: </span>
+                              <span class="text-success">'  . $data['name'] . "</span>
+                              </h5>
+                              <p class='card-text'>
+                              <span>Location: </span>
+                              <span class='text-success'>" . $data['address']. " " . $data['country'] . "</span>
+                              </p>
                               <a href='requestForm.php ?id=$data[id]' class='btn btn-primary'>Request for Test</a>
                               <a href='requestVaccineForm.php ?id=$data[id]' class='btn btn-primary'>Request for Vaccination</a>
                           </div>

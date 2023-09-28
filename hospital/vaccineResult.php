@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital-List</title>
+    <title>Result-List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <?php
@@ -50,7 +50,7 @@
     <div class="content container">
         <div class="pt-3">
             <h3 class="h2 mb-0 text-capitalize d-flex align-items-center gap-2">
-                Vaccination Approved Patients
+                Results
             </h3>
         </div>
         <?php
@@ -96,7 +96,11 @@
                                     <?php
                                     if (isset($_POST['searchBtn'])) {
                                         $status = $_POST['status'];
-                                        $query = "SELECT * FROM `test_result` WHERE type = 'vaccine'";
+                                        $query = $query = "SELECT * 
+                                        FROM `test_result`
+                                        INNER JOIN test_request ON test_result.appointment_id = test_request.id
+                                        WHERE `test_result`.`type` = 'vaccine' AND `hospital_id` = '$hospitalId';
+                                        ";;
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
                                             echo "
@@ -126,7 +130,11 @@
                                             ";
                                         }
                                     } else if (isset($_POST['Reset'])) {
-                                        $query = "SELECT * FROM `test_result` WHERE type = 'vaccine'";
+                                        $query = $query = "SELECT * 
+                                        FROM `test_result`
+                                        INNER JOIN test_request ON test_result.appointment_id = test_request.id
+                                        WHERE `test_result`.`type` = 'vaccine' AND `hospital_id` = '$hospitalId';
+                                        ";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
                                             echo "
@@ -153,7 +161,11 @@
                                             echo "<h2 class='text-center'>No Data</h2>";
                                         }
                                     } else {
-                                        $query = "SELECT * FROM `test_result` WHERE type = 'vaccine'";
+                                        $query = "SELECT * 
+                                        FROM `test_result`
+                                        INNER JOIN test_request ON test_result.appointment_id = test_request.id
+                                        WHERE `test_result`.`type` = 'vaccine' AND `hospital_id` = '$hospitalId';
+                                        ";
                                         $result = mysqli_query($conn, $query);
                                         if (mysqli_num_rows($result) != 0) {
                                             echo "

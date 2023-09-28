@@ -1,11 +1,14 @@
 <?php
 include('connection.php');
 $id = $_GET['id'];
+
+// Delete child records first
+$delChilds = "DELETE FROM test_result WHERE appointment_id = '$id'";
+$childResult = mysqli_query($conn, $delChilds);
+
+// Then delete the parent record
 $delQuery = "DELETE FROM test_request WHERE id = '$id'";
 $result = mysqli_query($conn, $delQuery);
-
-$delChilds = "DELETE FROM test_result WHERE appointment_id = '$id'";
-$childResult = mysqli_query($conn, $delChilds) or die("Something went wrong");
 
 if ($result && $childResult) {
     echo "<script>
@@ -18,4 +21,5 @@ if ($result && $childResult) {
         history.back();
     </script>";
 }
+
 ?>

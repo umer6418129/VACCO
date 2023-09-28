@@ -48,9 +48,9 @@
 
     <main>
         <div>
-            <div class="my-5 mx-5 row row-cols-1 row-cols-md-4 justify-content-between">
+            <div class="my-5 mx-5 justify-content-between">
                 <div>
-                    <h1 class="text-black-50">Request Form</h1>
+                    <h2 class="text-black-50">Vaccination Request Form</h2>
                 </div>
             </div>
             <div class="container">

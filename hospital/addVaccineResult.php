@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital-List</title>
+    <title>Result-Add</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <?php
@@ -57,7 +57,7 @@
     <div class="content container">
         <div class="pt-3">
             <h3 class="h2 mb-0 text-capitalize d-flex align-items-center gap-2">
-                Vaccination Approved Patients
+            Add Result
             </h3>
         </div>
         <?php
@@ -125,7 +125,7 @@
                                                 </div>
                                             </div>
                                             <div class="toast-body text-white">
-                                              Result has been edit
+                                              Result has been Added
                                             </div>
                                         </div>
                                     </div>
