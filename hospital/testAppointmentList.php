@@ -123,8 +123,8 @@
                                                     <td>" . $data['availabity_to'] . "</td>
                                                     <td>" . $data['isapprove'] . "</td>
                                                     <td class='d-flex'>
-                                                        <a href='viewTestPatient.php ?id=$data[id]&name=$data[name]&email=$data[email]&age=$data[age]&home_address=$data[home_address]&blood_group=$data[blood_group]&availabity_from=$data[availabity_from]&availabity_to=$data[availabity_to]' class='btn btn-success'>View</a>
-                                                        <a class='btn btn-sm btn-danger ms-2' href = 'approvedReqDel.php ?id=$data[id]'>Delete</a>
+                                                        <a href='viewTestPatient.php?id=$data[id]&name=$data[name]&email=$data[email]&age=$data[age]&home_address=$data[home_address]&blood_group=$data[blood_group]&availabity_from=$data[availabity_from]&availabity_to=$data[availabity_to]' class='btn btn-success'>View</a>
+                                                        <a class='btn btn-sm btn-danger ms-2' href = 'approvedReqDel.php?id=$data[id]'>Delete</a>
                                                     </td>
                                                     </tr>";
                                             }
@@ -156,8 +156,8 @@
                                                     <td>" . $data['availabity_to'] . "</td>
                                                     <td>" . $data['isapprove'] . "</td>
                                                     <td class='d-flex'>
-                                                        <a href='viewTestPatient.php ?id=$data[id]&name=$data[name]&email=$data[email]&age=$data[age]&home_address=$data[home_address]&blood_group=$data[blood_group]&availabity_from=$data[availabity_from]&availabity_to=$data[availabity_to]' class='btn btn-success'>View</a>
-                                                        <a class='btn btn-sm btn-danger ms-2' href = 'approvedReqDel.php ?id=$data[id]'>Delete</a>
+                                                        <a href='viewTestPatient.php?id=$data[id]&name=$data[name]&email=$data[email]&age=$data[age]&home_address=$data[home_address]&blood_group=$data[blood_group]&availabity_from=$data[availabity_from]&availabity_to=$data[availabity_to]' class='btn btn-success'>View</a>
+                                                        <a class='btn btn-sm btn-danger ms-2' href = 'approvedReqDel.php?id=$data[id]'>Delete</a>
                                                     </td>
                                                     </tr>";
                                             }
@@ -187,8 +187,8 @@
                                                     <td>" . $data['availabity_to'] . "</td>
                                                     <td>" . $data['isapprove'] . "</td>
                                                     <td class='d-flex'>
-                                                        <a href='viewTestPatient.php ?id=$data[id]&name=$data[name]&email=$data[email]&age=$data[age]&home_address=$data[home_address]&blood_group=$data[blood_group]&availabity_from=$data[availabity_from]&availabity_to=$data[availabity_to]' class='btn btn-sm btn-success'>View</a>
-                                                        <a class='btn btn-sm btn-danger ms-2' href = 'approvedReqDel.php ?id=$data[id]'>Delete</a>
+                                                        <a href='viewTestPatient.php?id=$data[id]&name=$data[name]&email=$data[email]&age=$data[age]&home_address=$data[home_address]&blood_group=$data[blood_group]&availabity_from=$data[availabity_from]&availabity_to=$data[availabity_to]' class='btn btn-sm btn-success'>View</a>
+                                                        <a class='btn btn-sm btn-danger ms-2' href = 'approvedReqDel.php?id=$data[id]'>Delete</a>
                                                     </td>
                                                     </tr>";
                                             }

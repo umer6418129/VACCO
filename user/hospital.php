@@ -76,8 +76,8 @@
                               <span>Location: </span>
                               <span class='text-success'>" . $data['address']. " " . $data['country'] . "</span>
                               </p>
-                              <a href='requestForm.php ?id=$data[id]' class='btn btn-primary'>Request for Test</a>
-                              <a href='requestVaccineForm.php ?id=$data[id]' class='btn btn-primary'>Request for Vaccination</a>
+                              <a href='requestForm.php?id=$data[id]' class='btn btn-primary'>Request for Test</a>
+                              <a href='requestVaccineForm.php?id=$data[id]' class='btn btn-primary'>Request for Vaccination</a>
                           </div>
                       </div>
                   </div>

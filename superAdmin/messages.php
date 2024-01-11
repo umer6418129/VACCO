@@ -83,10 +83,10 @@
                                                     <td>" . $data['email'] . "</td>
                                                     <td>" . $data['subject'] . "</td>
                                                     <td class='d-flex'>
-                                                        <a href='./manageMsg/delMsg.php ?id=$data[id]' class='btn btn-danger btn-sm mx-2' name='deleteRecord'>Delete</a>
+                                                        <a href='./manageMsg/delMsg.php?id=$data[id]' class='btn btn-danger btn-sm mx-2' name='deleteRecord'>Delete</a>
                                                         <form action='' method='POST'>
                                                         <input type='hidden' name='viewId' value='" . $data['id'] . "'>
-                                                        <a type='submit' href='view.php ?id=$data[id]&name=$data[name]&email=$data[email]&subject=$data[subject]&query=$data[query]' class='btn btn-success btn-sm' name='viewBtn'>View</a>
+                                                        <a type='submit' href='view.php?id=$data[id]&name=$data[name]&email=$data[email]&subject=$data[subject]&query=$data[query]' class='btn btn-success btn-sm' name='viewBtn'>View</a>
                                                         </form>
                                                     </td>
                                                 </tr>

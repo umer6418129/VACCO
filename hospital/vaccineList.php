@@ -111,8 +111,8 @@
                                                     <td>" . $data['formula'] . "</td>
                                                     <td>" . $data['availability'] . "</td>
                                                     <td>
-                                                    <a class='btn btn-sm btn-danger ms-2' href = 'vaccineDel.php ?id=$data[id]'>Delete</a>
-                                                    <a class='btn btn-sm btn-success ms-2' href = 'vaccineUpdateStatus.php ?id=$data[id]&name=$data[name]&formula=$data[formula]&availability=$data[availability]'>Update Status</a>
+                                                    <a class='btn btn-sm btn-danger ms-2' href = 'vaccineDel.php?id=$data[id]'>Delete</a>
+                                                    <a class='btn btn-sm btn-success ms-2' href = 'vaccineUpdateStatus.php?id=$data[id]&name=$data[name]&formula=$data[formula]&availability=$data[availability]'>Update Status</a>
                                                     </td>
                                                     </tr>";
                                             }
@@ -140,8 +140,8 @@
                                                     <td>" . $data['formula'] . "</td>
                                                     <td>" . $data['availability'] . "</td>
                                                     <td>
-                                                    <a class='btn btn-sm btn-danger ms-2' href = 'vaccineDel.php ?id=$data[id]'>Delete</a>
-                                                    <a class='btn btn-sm btn-success ms-2' href = 'vaccineUpdateStatus.php ?id=$data[id]&name=$data[name]&formula=$data[formula]&availability=$data[availability]'>Update Status</a>
+                                                    <a class='btn btn-sm btn-danger ms-2' href = 'vaccineDel.php?id=$data[id]'>Delete</a>
+                                                    <a class='btn btn-sm btn-success ms-2' href = 'vaccineUpdateStatus.php?id=$data[id]&name=$data[name]&formula=$data[formula]&availability=$data[availability]'>Update Status</a>
                                                     </td>
                                                     </tr>";
                                             }
@@ -167,8 +167,8 @@
                                                     <td>" . $data['formula'] . "</td>
                                                     <td>" . $data['availability'] . "</td>
                                                     <td>
-                                                    <a class='btn btn-sm btn-success ms-2' href = 'vaccineUpdateStatus.php ?id=$data[id]&name=$data[name]&formula=$data[formula]&availability=$data[availability]'>Update Status</a>
-                                                    <a class='btn btn-sm btn-danger ms-2' href = 'vaccineDel.php ?id=$data[id]'>Delete</a>
+                                                    <a class='btn btn-sm btn-success ms-2' href = 'vaccineUpdateStatus.php?id=$data[id]&name=$data[name]&formula=$data[formula]&availability=$data[availability]'>Update Status</a>
+                                                    <a class='btn btn-sm btn-danger ms-2' href = 'vaccineDel.php?id=$data[id]'>Delete</a>
                                                     </td>
                                                     </tr>";
                                             }

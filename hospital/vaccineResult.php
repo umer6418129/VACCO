@@ -120,7 +120,7 @@
                                                         <td >" . $data['appointment_id'] . "</td>
                                                         <td>" . $data['test_date'] . "</td>
                                                         <td>
-                                                            <a class='btn btn-danger' href='vaccineResDel.php ?id=$data[id]'>Delete</a>
+                                                            <a class='btn btn-danger' href='vaccineResDel.php?id=$data[id]'>Delete</a>
                                                         </td>
                                                     </tr>";
                                             }
@@ -153,7 +153,7 @@
                                                         <td >" . $data['appointment_id'] . "</td>
                                                         <td>" . $data['test_date'] . "</td>
                                                         <td>
-                                                            <a class='btn btn-danger' href='vaccineResDel.php ?id=$data[id]'>Delete</a>
+                                                            <a class='btn btn-danger' href='vaccineResDel.php?id=$data[id]'>Delete</a>
                                                         </td>
                                                     </tr>";
                                             }
@@ -184,7 +184,7 @@
                                                         <td >" . $data['appointment_id'] . "</td>
                                                         <td>" . $data['test_date'] . "</td>
                                                         <td>
-                                                            <a class='btn btn-danger' href='vaccineResDel.php ?id=$data[id]'>Delete</a>
+                                                            <a class='btn btn-danger' href='vaccineResDel.php?id=$data[id]'>Delete</a>
                                                         </td>
                                                     </tr>";
                                             }

@@ -64,8 +64,8 @@
                                                         <td>" . $data['country'] . "</td>
                                                         <td>" . $data['email'] . "</td>
                                                         <td>
-                                                            <a href = './hospital/Apporal.php ?id=$data[id]' class='btn btn-success'>Accept</a>
-                                                            <a href = './hospital/Deny.php ?id=$data[id]' class='btn btn-danger'>Deny</a>
+                                                            <a href = './hospital/Apporal.php?id=$data[id]' class='btn btn-success'>Accept</a>
+                                                            <a href = './hospital/Deny.php?id=$data[id]' class='btn btn-danger'>Deny</a>
                                                         </td>
                                                     </tr>";
                                             }

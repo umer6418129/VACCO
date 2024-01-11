@@ -61,8 +61,8 @@
                                                     <td>" . $data['email_phone'] . "</td>
                                                     <td>" . $data['gender'] . "</td>
                                                         <td>
-                                                            <a href = './usersAction/Approval.php ?id=$data[id]' class='btn btn-success'>Accept</a>
-                                                            <a href = './usersAction/Deny.php ?id=$data[id]' class='btn btn-danger'>Deny</a>
+                                                            <a href = './usersAction/Approval.php?id=$data[id]' class='btn btn-success'>Accept</a>
+                                                            <a href = './usersAction/Deny.php?id=$data[id]' class='btn btn-danger'>Deny</a>
                                                         </td>
                                                     </tr>";
                                             }
