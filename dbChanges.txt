@@ -1,4 +1,6 @@
 25-feb
+ALTER TABLE `users` ADD FOREIGN KEY (`role_id`) REFERENCES `user_roles`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `users` ADD `role_id` INT NULL DEFAULT '3' AFTER `id`;
 INSERT INTO `user_roles`(`role_name`) VALUES ('super_admin');
 INSERT INTO `user_roles`(`role_name`) VALUES ('hospital_admin');
 INSERT INTO `user_roles`(`role_name`) VALUES ('user');
