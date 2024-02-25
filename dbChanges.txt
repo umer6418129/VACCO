@@ -1,0 +1,5 @@
+25-feb
+INSERT INTO `user_roles`(`role_name`) VALUES ('super_admin');
+INSERT INTO `user_roles`(`role_name`) VALUES ('hospital_admin');
+INSERT INTO `user_roles`(`role_name`) VALUES ('user');
+CREATE TABLE user_roles (id int PRIMARY KEY AUTO_INCREMENT, role_name varchar(60));
