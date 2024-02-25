@@ -15,7 +15,7 @@ class RoleMigration extends BaseMigration
             self::createTable($conn, $sql);
             echo "tbl_userRoles has created";
         }else{
-            echo "tbl_userRoles has not created";
+            echo "tbl_userRoles already exist";
         }
     }
 }
