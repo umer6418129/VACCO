@@ -22,8 +22,6 @@ class UserMigration extends BaseMigration
                     FOREIGN KEY (role_id) REFERENCES tbl_userroles(id)
                 )";
                 self::createTable($conn, $sql);
-            }else{
-                echo "tbl_user already exist";
             }
         } catch (\Throwable $th) {
             echo $th;

@@ -9,6 +9,6 @@ $conn = connectToDatabase($config);
 
 
 $roleMigration = RoleMigration::up($conn);
-$roleMigration = UserMigration::up($conn);
+$userMigration = UserMigration::up($conn);
 
 ?>
