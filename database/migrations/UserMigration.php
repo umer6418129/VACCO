@@ -27,5 +27,20 @@ class UserMigration extends BaseMigration
             echo $th;
         }
     }
+
+    public static function down($conn)
+    {
+        try {
+            $sql = "SHOW TABLES LIKE 'tbl_user'";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                $sql = "DROP TABLE tbl_user";
+                self::createTable($conn, $sql);
+            }
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+    }
+
 }
 
