@@ -5,6 +5,8 @@ function connectToDatabase($config)
     if (!$conn) {
         die('Connection failed: ' . mysqli_connect_error());
     }
+    if ($conn) {
+        return $conn;
+    }
 
-    return $conn;
 }

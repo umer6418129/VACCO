@@ -2,6 +2,10 @@
 <html dir="ltr">
 
 <head>
+    <?php
+    include('../../../database/config/DbConnect.php');
+    session_start();
+    ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
