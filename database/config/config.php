@@ -1,8 +1,8 @@
 <?php
 
 $config = [
-    "host" => "localhost",
+    "host" => "127.0.0.1",
     "username" => "root",
-    "password" => "",
-    "database" => "vaccination_hub_2.0",
+    "password" => "root@root",
+    "database" => "vaccination_hub_dev_db",
 ];
